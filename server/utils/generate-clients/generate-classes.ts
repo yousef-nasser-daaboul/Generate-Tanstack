@@ -1,16 +1,13 @@
-import {
-  extractClassDetails,
-} from "../ast/extract-metadata";
+import { ClassDetails } from "../ast/extract-metadata";
 import { generateMethods } from "./generate-methods";
 import { generateParamsInterfaces } from "./generate-params-interfaces";
 
-export function generateClasses(fileContent: string): string {
+export function generateClasses(classes: ClassDetails[]): string {
   let content = `
     import axios from "axios";
     import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
   `;
-  const astObject = extractClassDetails(fileContent);
-  for (const classInfo of Object.values(astObject)) {
+  for (const classInfo of Object.values(classes)) {
     let classContent = `
         export class ${classInfo.className} {
             protected instance: AxiosInstance;

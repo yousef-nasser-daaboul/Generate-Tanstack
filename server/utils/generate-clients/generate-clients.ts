@@ -1,6 +1,9 @@
 import * as fs from "fs";
 import { writeFormattedFile } from "../helper/writer";
-import { extractInterfaceDetails } from "../ast/extract-metadata";
+import {
+  extractClassDetails,
+  extractInterfaceDetails,
+} from "../ast/extract-metadata";
 import { extractEnumDetails } from "../ast/extract-metadata";
 import { clientFunctionsGenerated } from "../helper/client-functions-generated";
 import { generateInterfaces } from "./generate-interfaces";
@@ -14,7 +17,9 @@ export async function generateClient(
   const fileContent = fs.readFileSync(inputPath, "utf8");
 
   let content = ``;
-  content += generateClasses(fileContent);
+
+  const classes = extractClassDetails(fileContent);
+  content += generateClasses(classes);
 
   const interfaces = extractInterfaceDetails(fileContent);
 

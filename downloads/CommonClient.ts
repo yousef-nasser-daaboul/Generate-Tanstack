@@ -4551,6 +4551,7 @@ export enum ExportLogType {
 }
 
 export interface ExportTransactionsOptions {
+    recordsPerFile?: number | null;
     exportTransactionsType?: ExportTransactionsType;
 }
 
@@ -4753,6 +4754,7 @@ export interface PurposeDtoIPaginatedList {
 export interface RecordMappingResult {
     succeed?: boolean;
     transactionId?: number | null;
+    transactionNumber?: string | null;
     transactionType?: TransactionTypes;
     reasons?: string[] | null;
 }

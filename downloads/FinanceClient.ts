@@ -435,7 +435,6 @@ export class ExternalTransferTransactionClient {
     /**
      * @param branchIdHeader (optional) 
      * @param treasuryId (optional) 
-     * @param destinationTreasuryId (optional) 
      * @param destinationBranchId (optional) 
      * @param reference (optional) 
      * @param notes (optional) 
@@ -443,7 +442,7 @@ export class ExternalTransferTransactionClient {
      * @param financeTransactionDetails (optional) 
      * @return Success
      */
-    add(branchIdHeader: string | undefined, treasuryId: number | undefined, destinationTreasuryId: number | undefined, destinationBranchId: number | undefined, reference: string | undefined, notes: string | undefined, attachment_Files: FileParameter[] | undefined, financeTransactionDetails: AddFinanceTransactionDetailDto[] | undefined, signal?: AbortSignal): Promise<number> {
+    add(branchIdHeader: string | undefined, treasuryId: number | undefined, destinationBranchId: number | undefined, reference: string | undefined, notes: string | undefined, attachment_Files: FileParameter[] | undefined, financeTransactionDetails: AddFinanceTransactionDetailWithRateDto[] | undefined, signal?: AbortSignal): Promise<number> {
         let url_ = this.baseUrl + "/api/Finance/ExternalTransferTransaction/Add";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -452,10 +451,6 @@ export class ExternalTransferTransactionClient {
             throw new Error("The parameter 'treasuryId' cannot be null.");
         else
             content_.append("TreasuryId", treasuryId.toString());
-        if (destinationTreasuryId === null || destinationTreasuryId === undefined)
-            throw new Error("The parameter 'destinationTreasuryId' cannot be null.");
-        else
-            content_.append("DestinationTreasuryId", destinationTreasuryId.toString());
         if (destinationBranchId === null || destinationBranchId === undefined)
             throw new Error("The parameter 'destinationBranchId' cannot be null.");
         else
@@ -1985,6 +1980,64 @@ export class FinanceTransactionReportClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
         return Promise.resolve<SimpleCurrencyDto[]>(null as any);
+    }
+
+    /**
+     * @param branchIds (optional) 
+     * @param branchIdHeader (optional) 
+     * @return Success
+     */
+    getTreasuriesByBranchIds(branchIds: number[] | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<SimpleTreasuryDto[]> {
+        let url_ = this.baseUrl + "/api/Finance/FinanceTransactionReport/GetTreasuriesByBranchIds?";
+        if (branchIds === null)
+            throw new Error("The parameter 'branchIds' cannot be null.");
+        else if (branchIds !== undefined)
+            branchIds && branchIds.forEach(item => { url_ += "branchIds=" + encodeURIComponent("" + item) + "&"; });
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: AxiosRequestConfig = {
+            method: "GET",
+            url: url_,
+            headers: {
+                "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
+                "Accept": "text/plain"
+            },
+            signal
+        };
+
+        return this.instance.request(options_).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.processGetTreasuriesByBranchIds(_response);
+        });
+    }
+
+    protected processGetTreasuriesByBranchIds(response: AxiosResponse): Promise<SimpleTreasuryDto[]> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (const k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = JSON.parse(resultData200);
+            return Promise.resolve<SimpleTreasuryDto[]>(result200);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<SimpleTreasuryDto[]>(null as any);
     }
 }
 
@@ -4302,10 +4355,12 @@ export class TreasuryClient {
      * @param name (optional) 
      * @param branchIds (optional) 
      * @param type (optional) 
+     * @param pageNumber (optional) 
+     * @param pageSize (optional) 
      * @param branchIdHeader (optional) 
      * @return Success
      */
-    getList(key: string | undefined, name: string | undefined, branchIds: number[] | undefined, type: TreasuryTypes | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<TreasuryListDto[]> {
+    getList(key: string | undefined, name: string | undefined, branchIds: number[] | undefined, type: TreasuryTypes | undefined, pageNumber: number | undefined, pageSize: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<TreasuryListDto[]> {
         let url_ = this.baseUrl + "/api/Finance/Treasury/GetList?";
         if (key === null)
             throw new Error("The parameter 'key' cannot be null.");
@@ -4323,6 +4378,14 @@ export class TreasuryClient {
             throw new Error("The parameter 'type' cannot be null.");
         else if (type !== undefined)
             url_ += "Type=" + encodeURIComponent("" + type) + "&";
+        if (pageNumber === null)
+            throw new Error("The parameter 'pageNumber' cannot be null.");
+        else if (pageNumber !== undefined)
+            url_ += "PageNumber=" + encodeURIComponent("" + pageNumber) + "&";
+        if (pageSize === null)
+            throw new Error("The parameter 'pageSize' cannot be null.");
+        else if (pageSize !== undefined)
+            url_ += "PageSize=" + encodeURIComponent("" + pageSize) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_: AxiosRequestConfig = {
@@ -4368,6 +4431,89 @@ export class TreasuryClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
         return Promise.resolve<TreasuryListDto[]>(null as any);
+    }
+
+    /**
+     * @param key (optional) 
+     * @param name (optional) 
+     * @param branchIds (optional) 
+     * @param type (optional) 
+     * @param pageNumber (optional) 
+     * @param pageSize (optional) 
+     * @param branchIdHeader (optional) 
+     * @return Success
+     */
+    getPaginatedList(key: string | undefined, name: string | undefined, branchIds: number[] | undefined, type: TreasuryTypes | undefined, pageNumber: number | undefined, pageSize: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<TreasuryListDtoIPaginatedList> {
+        let url_ = this.baseUrl + "/api/Finance/Treasury/GetPaginatedList?";
+        if (key === null)
+            throw new Error("The parameter 'key' cannot be null.");
+        else if (key !== undefined)
+            url_ += "Key=" + encodeURIComponent("" + key) + "&";
+        if (name === null)
+            throw new Error("The parameter 'name' cannot be null.");
+        else if (name !== undefined)
+            url_ += "Name=" + encodeURIComponent("" + name) + "&";
+        if (branchIds === null)
+            throw new Error("The parameter 'branchIds' cannot be null.");
+        else if (branchIds !== undefined)
+            branchIds && branchIds.forEach(item => { url_ += "BranchIds=" + encodeURIComponent("" + item) + "&"; });
+        if (type === null)
+            throw new Error("The parameter 'type' cannot be null.");
+        else if (type !== undefined)
+            url_ += "Type=" + encodeURIComponent("" + type) + "&";
+        if (pageNumber === null)
+            throw new Error("The parameter 'pageNumber' cannot be null.");
+        else if (pageNumber !== undefined)
+            url_ += "PageNumber=" + encodeURIComponent("" + pageNumber) + "&";
+        if (pageSize === null)
+            throw new Error("The parameter 'pageSize' cannot be null.");
+        else if (pageSize !== undefined)
+            url_ += "PageSize=" + encodeURIComponent("" + pageSize) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: AxiosRequestConfig = {
+            method: "GET",
+            url: url_,
+            headers: {
+                "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
+                "Accept": "text/plain"
+            },
+            signal
+        };
+
+        return this.instance.request(options_).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.processGetPaginatedList(_response);
+        });
+    }
+
+    protected processGetPaginatedList(response: AxiosResponse): Promise<TreasuryListDtoIPaginatedList> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (const k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = JSON.parse(resultData200);
+            return Promise.resolve<TreasuryListDtoIPaginatedList>(result200);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<TreasuryListDtoIPaginatedList>(null as any);
     }
 
     /**
@@ -4459,6 +4605,7 @@ export interface ActivityLogDto {
     actionDate?: string;
     actionName?: string | null;
     actionBy?: string | null;
+    actionById?: number | null;
     assignedTo?: string | null;
     remarks?: string | null;
     status?: string | null;
@@ -4472,6 +4619,14 @@ export interface ActivityLogDto {
 export interface AddFinanceTransactionDetailDto {
     currencyId: number;
     fcAmount: number;
+    financialAccountId?: number | null;
+    description?: string | null;
+}
+
+export interface AddFinanceTransactionDetailWithRateDto {
+    currencyId: number;
+    fcAmount: number;
+    rate?: number | null;
     financialAccountId?: number | null;
     description?: string | null;
 }
@@ -4552,9 +4707,12 @@ export interface FinanceTransactionDetailDto {
     currency?: SimpleCurrencyDto;
     financialAccount?: FinancialAccountDto;
     fcAmount?: number;
+    rate?: number;
+    lcAmount?: number;
     vatPercent?: number;
     vatAmount?: number;
     netVatAmount?: number;
+    totalLCAmount?: number;
     reference?: string | null;
     description?: string | null;
 }
@@ -4794,6 +4952,7 @@ export enum TransactionStatuses {
     PendingForReceiverApproval = "PendingForReceiverApproval",
     PendingForSenderCash = "PendingForSenderCash",
     PendingForReceiverCash = "PendingForReceiverCash",
+    ComplianceProcessing = "ComplianceProcessing",
 }
 
 export enum TransactionTypes {
@@ -4837,7 +4996,15 @@ export interface TreasuryListDto {
     type?: TreasuryTypes;
     active?: boolean;
     responsibleUser?: LookupApplicationUserDto;
-    balance?: TreasuryBalanceDto;
+}
+
+export interface TreasuryListDtoIPaginatedList {
+    readonly items?: TreasuryListDto[] | null;
+    readonly pageNumber?: number;
+    readonly totalPages?: number;
+    readonly totalCount?: number;
+    readonly hasPreviousPage?: boolean;
+    readonly hasNextPage?: boolean;
 }
 
 export interface TreasuryLookupDto {

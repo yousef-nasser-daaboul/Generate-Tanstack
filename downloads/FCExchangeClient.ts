@@ -83,11 +83,16 @@ export class CurrencyExchangeClient {
     }
 
     /**
+     * @param name (optional) 
      * @param branchIdHeader (optional) 
      * @return Success
      */
-    getList(branchIdHeader: string | undefined, signal?: AbortSignal): Promise<ExchangeCurrencyDto[]> {
-        let url_ = this.baseUrl + "/api/FCExchange/CurrencyExchange/GetList";
+    getList(name: string | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<ExchangeCurrencyDto[]> {
+        let url_ = this.baseUrl + "/api/FCExchange/CurrencyExchange/GetList?";
+        if (name === null)
+            throw new Error("The parameter 'name' cannot be null.");
+        else if (name !== undefined)
+            url_ += "name=" + encodeURIComponent("" + name) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_: AxiosRequestConfig = {
@@ -190,11 +195,16 @@ export class CurrencyExchangeClient {
     }
 
     /**
+     * @param name (optional) 
      * @param branchIdHeader (optional) 
      * @return Success
      */
-    getLookups(branchIdHeader: string | undefined, signal?: AbortSignal): Promise<SimpleCurrencyDto[]> {
-        let url_ = this.baseUrl + "/api/FCExchange/CurrencyExchange/GetLookups";
+    getLookups(name: string | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<SimpleCurrencyDto[]> {
+        let url_ = this.baseUrl + "/api/FCExchange/CurrencyExchange/GetLookups?";
+        if (name === null)
+            throw new Error("The parameter 'name' cannot be null.");
+        else if (name !== undefined)
+            url_ += "name=" + encodeURIComponent("" + name) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_: AxiosRequestConfig = {
@@ -315,11 +325,16 @@ export class CurrencySwapClient {
     }
 
     /**
+     * @param name (optional) 
      * @param branchIdHeader (optional) 
      * @return Success
      */
-    getList(branchIdHeader: string | undefined, signal?: AbortSignal): Promise<SwapCurrencyDto[]> {
-        let url_ = this.baseUrl + "/api/FCExchange/CurrencySwap/GetList";
+    getList(name: string | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<SwapCurrencyDto[]> {
+        let url_ = this.baseUrl + "/api/FCExchange/CurrencySwap/GetList?";
+        if (name === null)
+            throw new Error("The parameter 'name' cannot be null.");
+        else if (name !== undefined)
+            url_ += "name=" + encodeURIComponent("" + name) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_: AxiosRequestConfig = {
@@ -653,16 +668,26 @@ export class ExchangeRatesClient {
     }
 
     /**
-     * @param branchId (optional) 
+     * @param branchesIds (optional) 
+     * @param created (optional) 
+     * @param statuses (optional) 
      * @param branchIdHeader (optional) 
      * @return Success
      */
-    getVersionsList(branchId: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<ExchangeRateVersionsDto[]> {
+    getVersionsList(branchesIds: number[] | undefined, created: string | undefined, statuses: ExchangeRateStatuses[] | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<BranchExchangeRateVersionsDto[]> {
         let url_ = this.baseUrl + "/api/FCExchange/ExchangeRates/GetVersionsList?";
-        if (branchId === null)
-            throw new Error("The parameter 'branchId' cannot be null.");
-        else if (branchId !== undefined)
-            url_ += "branchId=" + encodeURIComponent("" + branchId) + "&";
+        if (branchesIds === null)
+            throw new Error("The parameter 'branchesIds' cannot be null.");
+        else if (branchesIds !== undefined)
+            branchesIds && branchesIds.forEach(item => { url_ += "BranchesIds=" + encodeURIComponent("" + item) + "&"; });
+        if (created === null)
+            throw new Error("The parameter 'created' cannot be null.");
+        else if (created !== undefined)
+            url_ += "Created=" + encodeURIComponent("" + created) + "&";
+        if (statuses === null)
+            throw new Error("The parameter 'statuses' cannot be null.");
+        else if (statuses !== undefined)
+            statuses && statuses.forEach(item => { url_ += "Statuses=" + encodeURIComponent("" + item) + "&"; });
         url_ = url_.replace(/[?&]$/, "");
 
         let options_: AxiosRequestConfig = {
@@ -686,7 +711,7 @@ export class ExchangeRatesClient {
         });
     }
 
-    protected processGetVersionsList(response: AxiosResponse): Promise<ExchangeRateVersionsDto[]> {
+    protected processGetVersionsList(response: AxiosResponse): Promise<BranchExchangeRateVersionsDto[]> {
         const status = response.status;
         let _headers: any = {};
         if (response.headers && typeof response.headers === "object") {
@@ -701,13 +726,13 @@ export class ExchangeRatesClient {
             let result200: any = null;
             let resultData200  = _responseText;
             result200 = JSON.parse(resultData200);
-            return Promise.resolve<ExchangeRateVersionsDto[]>(result200);
+            return Promise.resolve<BranchExchangeRateVersionsDto[]>(result200);
 
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.data;
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
-        return Promise.resolve<ExchangeRateVersionsDto[]>(null as any);
+        return Promise.resolve<BranchExchangeRateVersionsDto[]>(null as any);
     }
 
     /**
@@ -762,6 +787,64 @@ export class ExchangeRatesClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
         return Promise.resolve<void>(null as any);
+    }
+
+    /**
+     * @param id (optional) 
+     * @param branchIdHeader (optional) 
+     * @return Success
+     */
+    getById(id: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<ExchangeRateDto> {
+        let url_ = this.baseUrl + "/api/FCExchange/ExchangeRates/GetById?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: AxiosRequestConfig = {
+            method: "GET",
+            url: url_,
+            headers: {
+                "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
+                "Accept": "text/plain"
+            },
+            signal
+        };
+
+        return this.instance.request(options_).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.processGetById(_response);
+        });
+    }
+
+    protected processGetById(response: AxiosResponse): Promise<ExchangeRateDto> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (const k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = JSON.parse(resultData200);
+            return Promise.resolve<ExchangeRateDto>(result200);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<ExchangeRateDto>(null as any);
     }
 
     /**
@@ -820,17 +903,22 @@ export class ExchangeRatesClient {
 
     /**
      * @param branchIdHeader (optional) 
+     * @param body (optional) 
      * @return Success
      */
-    saveDraftToArchive(branchIdHeader: string | undefined, signal?: AbortSignal): Promise<void> {
+    saveDraftToArchive(branchIdHeader: string | undefined, body: number[] | undefined, signal?: AbortSignal): Promise<void> {
         let url_ = this.baseUrl + "/api/FCExchange/ExchangeRates/SaveDraftToArchive";
         url_ = url_.replace(/[?&]$/, "");
 
+        const content_ = JSON.stringify(body);
+
         let options_: AxiosRequestConfig = {
+            data: content_,
             method: "PUT",
             url: url_,
             headers: {
                 "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
+                "Content-Type": "application/json",
             },
             signal
         };
@@ -869,17 +957,22 @@ export class ExchangeRatesClient {
 
     /**
      * @param branchIdHeader (optional) 
+     * @param body (optional) 
      * @return Success
      */
-    approve(branchIdHeader: string | undefined, signal?: AbortSignal): Promise<void> {
+    approve(branchIdHeader: string | undefined, body: number[] | undefined, signal?: AbortSignal): Promise<void> {
         let url_ = this.baseUrl + "/api/FCExchange/ExchangeRates/Approve";
         url_ = url_.replace(/[?&]$/, "");
 
+        const content_ = JSON.stringify(body);
+
         let options_: AxiosRequestConfig = {
+            data: content_,
             method: "PUT",
             url: url_,
             headers: {
                 "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
+                "Content-Type": "application/json",
             },
             signal
         };
@@ -915,6 +1008,64 @@ export class ExchangeRatesClient {
         }
         return Promise.resolve<void>(null as any);
     }
+
+    /**
+     * @param id (optional) 
+     * @param branchIdHeader (optional) 
+     * @return Success
+     */
+    getExchangeRateBranches(id: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<ExchangeRateApprovedBranchDto[]> {
+        let url_ = this.baseUrl + "/api/FCExchange/ExchangeRates/GetExchangeRateBranches?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: AxiosRequestConfig = {
+            method: "GET",
+            url: url_,
+            headers: {
+                "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
+                "Accept": "text/plain"
+            },
+            signal
+        };
+
+        return this.instance.request(options_).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.processGetExchangeRateBranches(_response);
+        });
+    }
+
+    protected processGetExchangeRateBranches(response: AxiosResponse): Promise<ExchangeRateApprovedBranchDto[]> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (const k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = JSON.parse(resultData200);
+            return Promise.resolve<ExchangeRateApprovedBranchDto[]>(result200);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<ExchangeRateApprovedBranchDto[]>(null as any);
+    }
 }
 
 export class ReportClient {
@@ -942,16 +1093,20 @@ export class ReportClient {
      * @param buyAmount_To (optional) 
      * @param statuses (optional) 
      * @param customerName (optional) 
+     * @param pWD (optional) 
+     * @param isPep (optional) 
+     * @param isFI (optional) 
      * @param customerType (optional) 
      * @param customerSubTypeIds (optional) 
      * @param branchIds (optional) 
+     * @param industryIds (optional) 
      * @param exportAs (optional) 
      * @param pageNumber (optional) 
      * @param pageSize (optional) 
      * @param branchIdHeader (optional) 
      * @return Success
      */
-    saleAndPurchaseReport(date_From: string | undefined, date_To: string | undefined, userIds: number[] | undefined, sellCurrencyIds: number[] | undefined, sellAmount_From: number | undefined, sellAmount_To: number | undefined, buyCurrencyIds: number[] | undefined, buyAmount_From: number | undefined, buyAmount_To: number | undefined, statuses: TransactionStatuses[] | undefined, customerName: string | undefined, customerType: CustomerTypes | undefined, customerSubTypeIds: number[] | undefined, branchIds: number[] | undefined, exportAs: ReportTypes | undefined, pageNumber: number | undefined, pageSize: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<SaleAndPurchaseReportModelIPaginatedList> {
+    saleAndPurchaseReport(date_From: string | undefined, date_To: string | undefined, userIds: number[] | undefined, sellCurrencyIds: number[] | undefined, sellAmount_From: number | undefined, sellAmount_To: number | undefined, buyCurrencyIds: number[] | undefined, buyAmount_From: number | undefined, buyAmount_To: number | undefined, statuses: TransactionStatuses[] | undefined, customerName: string | undefined, pWD: boolean | undefined, isPep: boolean | undefined, isFI: boolean | undefined, customerType: CustomerTypes | undefined, customerSubTypeIds: number[] | undefined, branchIds: number[] | undefined, industryIds: number[] | undefined, exportAs: ReportTypes | undefined, pageNumber: number | undefined, pageSize: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<SaleAndPurchaseReportModelIPaginatedList> {
         let url_ = this.baseUrl + "/api/FCExchange/Report/SaleAndPurchaseReport?";
         if (date_From === null)
             throw new Error("The parameter 'date_From' cannot be null.");
@@ -997,6 +1152,18 @@ export class ReportClient {
             throw new Error("The parameter 'customerName' cannot be null.");
         else if (customerName !== undefined)
             url_ += "CustomerName=" + encodeURIComponent("" + customerName) + "&";
+        if (pWD === null)
+            throw new Error("The parameter 'pWD' cannot be null.");
+        else if (pWD !== undefined)
+            url_ += "PWD=" + encodeURIComponent("" + pWD) + "&";
+        if (isPep === null)
+            throw new Error("The parameter 'isPep' cannot be null.");
+        else if (isPep !== undefined)
+            url_ += "IsPep=" + encodeURIComponent("" + isPep) + "&";
+        if (isFI === null)
+            throw new Error("The parameter 'isFI' cannot be null.");
+        else if (isFI !== undefined)
+            url_ += "IsFI=" + encodeURIComponent("" + isFI) + "&";
         if (customerType === null)
             throw new Error("The parameter 'customerType' cannot be null.");
         else if (customerType !== undefined)
@@ -1009,6 +1176,10 @@ export class ReportClient {
             throw new Error("The parameter 'branchIds' cannot be null.");
         else if (branchIds !== undefined)
             branchIds && branchIds.forEach(item => { url_ += "BranchIds=" + encodeURIComponent("" + item) + "&"; });
+        if (industryIds === null)
+            throw new Error("The parameter 'industryIds' cannot be null.");
+        else if (industryIds !== undefined)
+            industryIds && industryIds.forEach(item => { url_ += "IndustryIds=" + encodeURIComponent("" + item) + "&"; });
         if (exportAs === null)
             throw new Error("The parameter 'exportAs' cannot be null.");
         else if (exportAs !== undefined)
@@ -1080,16 +1251,20 @@ export class ReportClient {
      * @param buyAmount_To (optional) 
      * @param statuses (optional) 
      * @param customerName (optional) 
+     * @param pWD (optional) 
+     * @param isPep (optional) 
+     * @param isFI (optional) 
      * @param customerType (optional) 
      * @param customerSubTypeIds (optional) 
      * @param branchIds (optional) 
+     * @param industryIds (optional) 
      * @param exportAs (optional) 
      * @param pageNumber (optional) 
      * @param pageSize (optional) 
      * @param branchIdHeader (optional) 
      * @return Success
      */
-    exportSaleAndPurchaseReport(date_From: string | undefined, date_To: string | undefined, userIds: number[] | undefined, sellCurrencyIds: number[] | undefined, sellAmount_From: number | undefined, sellAmount_To: number | undefined, buyCurrencyIds: number[] | undefined, buyAmount_From: number | undefined, buyAmount_To: number | undefined, statuses: TransactionStatuses[] | undefined, customerName: string | undefined, customerType: CustomerTypes | undefined, customerSubTypeIds: number[] | undefined, branchIds: number[] | undefined, exportAs: ReportTypes | undefined, pageNumber: number | undefined, pageSize: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<FileDto> {
+    exportSaleAndPurchaseReport(date_From: string | undefined, date_To: string | undefined, userIds: number[] | undefined, sellCurrencyIds: number[] | undefined, sellAmount_From: number | undefined, sellAmount_To: number | undefined, buyCurrencyIds: number[] | undefined, buyAmount_From: number | undefined, buyAmount_To: number | undefined, statuses: TransactionStatuses[] | undefined, customerName: string | undefined, pWD: boolean | undefined, isPep: boolean | undefined, isFI: boolean | undefined, customerType: CustomerTypes | undefined, customerSubTypeIds: number[] | undefined, branchIds: number[] | undefined, industryIds: number[] | undefined, exportAs: ReportTypes | undefined, pageNumber: number | undefined, pageSize: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<FileDto> {
         let url_ = this.baseUrl + "/api/FCExchange/Report/ExportSaleAndPurchaseReport?";
         if (date_From === null)
             throw new Error("The parameter 'date_From' cannot be null.");
@@ -1135,6 +1310,18 @@ export class ReportClient {
             throw new Error("The parameter 'customerName' cannot be null.");
         else if (customerName !== undefined)
             url_ += "CustomerName=" + encodeURIComponent("" + customerName) + "&";
+        if (pWD === null)
+            throw new Error("The parameter 'pWD' cannot be null.");
+        else if (pWD !== undefined)
+            url_ += "PWD=" + encodeURIComponent("" + pWD) + "&";
+        if (isPep === null)
+            throw new Error("The parameter 'isPep' cannot be null.");
+        else if (isPep !== undefined)
+            url_ += "IsPep=" + encodeURIComponent("" + isPep) + "&";
+        if (isFI === null)
+            throw new Error("The parameter 'isFI' cannot be null.");
+        else if (isFI !== undefined)
+            url_ += "IsFI=" + encodeURIComponent("" + isFI) + "&";
         if (customerType === null)
             throw new Error("The parameter 'customerType' cannot be null.");
         else if (customerType !== undefined)
@@ -1147,6 +1334,10 @@ export class ReportClient {
             throw new Error("The parameter 'branchIds' cannot be null.");
         else if (branchIds !== undefined)
             branchIds && branchIds.forEach(item => { url_ += "BranchIds=" + encodeURIComponent("" + item) + "&"; });
+        if (industryIds === null)
+            throw new Error("The parameter 'industryIds' cannot be null.");
+        else if (industryIds !== undefined)
+            industryIds && industryIds.forEach(item => { url_ += "IndustryIds=" + encodeURIComponent("" + item) + "&"; });
         if (exportAs === null)
             throw new Error("The parameter 'exportAs' cannot be null.");
         else if (exportAs !== undefined)
@@ -1752,6 +1943,7 @@ export class TransactionsClient {
      * @param sourceOfFundId (optional) 
      * @param commission (optional) 
      * @param remarks (optional) 
+     * @param uIRCode (optional) 
      * @param attachment_Files (optional) 
      * @param details (optional) 
      * @param exchangeRateId (optional) 
@@ -1761,7 +1953,7 @@ export class TransactionsClient {
      * @param branchId (optional) 
      * @return Success
      */
-    add(branchIdHeader: string | undefined, customerIdentityId: number | undefined, delegateIdentityId: number | undefined, purposeId: number | undefined, sourceOfFundId: number | undefined, commission: number | undefined, remarks: string | undefined, attachment_Files: FileParameter[] | undefined, details: AddExchangeTransactionDetailDto[] | undefined, exchangeRateId: number | undefined, riskScore: number | undefined, totalLCAmount: number | undefined, tax: number | undefined, branchId: number | undefined, signal?: AbortSignal): Promise<AddExchangeResultDto> {
+    add(branchIdHeader: string | undefined, customerIdentityId: number | undefined, delegateIdentityId: number | undefined, purposeId: number | undefined, sourceOfFundId: number | undefined, commission: number | undefined, remarks: string | undefined, uIRCode: string | undefined, attachment_Files: FileParameter[] | undefined, details: AddExchangeTransactionDetailDto[] | undefined, exchangeRateId: number | undefined, riskScore: number | undefined, totalLCAmount: number | undefined, tax: number | undefined, branchId: number | undefined, signal?: AbortSignal): Promise<AddExchangeResultDto> {
         let url_ = this.baseUrl + "/api/FCExchange/Transactions/Add";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -1790,6 +1982,10 @@ export class TransactionsClient {
             throw new Error("The parameter 'remarks' cannot be null.");
         else
             content_.append("Remarks", remarks.toString());
+        if (uIRCode === null || uIRCode === undefined)
+            throw new Error("The parameter 'uIRCode' cannot be null.");
+        else
+            content_.append("UIRCode", uIRCode.toString());
         if (attachment_Files === null || attachment_Files === undefined)
             throw new Error("The parameter 'attachment_Files' cannot be null.");
         else
@@ -2600,6 +2796,7 @@ export interface ActivityLogDto {
     actionDate?: string;
     actionName?: string | null;
     actionBy?: string | null;
+    actionById?: number | null;
     assignedTo?: string | null;
     remarks?: string | null;
     status?: string | null;
@@ -2629,6 +2826,14 @@ export interface AttachmentDto {
     files?: FileDto[] | null;
 }
 
+export interface BranchExchangeRateVersionsDto {
+    id?: number;
+    name?: string | null;
+    branch?: SimpleBranchDto;
+    created?: string;
+    exchangeRateStatus?: ExchangeRateStatuses;
+}
+
 export enum Channels {
     FaceToFace = "FaceToFace",
     NonFaceToFace = "NonFaceToFace",
@@ -2638,6 +2843,7 @@ export interface CountryDto {
     id?: number;
     name?: string | null;
     code?: string | null;
+    iso3Code?: string | null;
     countryCode?: string | null;
     active?: boolean;
     aliases?: string[] | null;
@@ -2652,9 +2858,10 @@ export interface CustomerAddressDto {
     countryId?: number;
     city?: SimpleCityDto;
     cityId?: number;
-    detailedAddress?: string | null;
     district?: string | null;
     street?: string | null;
+    detailedAddress?: string | null;
+    permanentAddress?: string | null;
     building?: string | null;
     poBox?: string | null;
     isMain?: boolean;
@@ -2747,6 +2954,12 @@ export interface ExchangeModificationListDtoIPaginatedList {
     readonly hasNextPage?: boolean;
 }
 
+export interface ExchangeRateApprovedBranchDto {
+    id?: number;
+    branch?: SimpleBranchDto;
+    approved?: boolean;
+}
+
 export interface ExchangeRateDetailDto {
     id?: number;
     currency?: SimpleCurrencyDto;
@@ -2764,8 +2977,7 @@ export interface ExchangeRateDto {
     name?: string | null;
     currency?: SimpleCurrencyDto;
     currencyId?: number;
-    branchId?: number;
-    exchangeRateStatus?: ExchangeRateStatuses;
+    isDraft?: boolean;
     created?: string;
     details?: ExchangeRateDetailDto[] | null;
 }
@@ -2777,16 +2989,8 @@ export interface ExchangeRateModel {
 }
 
 export enum ExchangeRateStatuses {
-    Draft = "Draft",
     Approved = "Approved",
-    Expired = "Expired",
-}
-
-export interface ExchangeRateVersionsDto {
-    id?: number;
-    name?: string | null;
-    branch?: SimpleBranchDto;
-    created?: string;
+    Archived = "Archived",
 }
 
 export interface ExchangeTransactionDetailDto {
@@ -2815,6 +3019,7 @@ export interface ExchangeTransactionDto {
     createdBy?: string | null;
     number?: string | null;
     customerIdentity?: CustomerIdentityTransactionDto;
+    delegateIdentityId?: number | null;
     delegateIdentity?: CustomerIdentityTransactionDto;
     purpose?: PurposeDto;
     sourceOfFund?: SourceOfFundDto;
@@ -2826,6 +3031,7 @@ export interface ExchangeTransactionDto {
     riskScore?: number;
     hasSellTransaction?: boolean;
     hasBuyTransaction?: boolean;
+    uirCode?: string | null;
     details?: ExchangeTransactionDetailDto[] | null;
     summary?: FcExchangeSummaryItemDto[] | null;
     lastModificationType?: ModificationTypes;
@@ -2852,6 +3058,7 @@ export interface ExchangeTransactionListDto {
     remarks?: string | null;
     hasSellTransaction?: boolean;
     hasBuyTransaction?: boolean;
+    uirCode?: string | null;
     type?: string | null;
     channel?: Channels;
     paymentMode?: PaymentModes;
@@ -2938,10 +3145,13 @@ export interface SaleAndPurchaseReportModel {
     sellAmount?: number;
     buyCurrency?: SimpleCurrencyDto;
     buyAmount?: number;
+    transactionType?: TransactionTypeDto;
+    transactionTypeId?: number;
     customer?: string | null;
     rate?: number;
     status?: TransactionStatuses;
     user?: string | null;
+    uirCode?: string | null;
     branch?: SimpleBranchDto;
     customerType?: CustomerTypes;
 }
@@ -3033,6 +3243,7 @@ export enum TransactionStatuses {
     PendingForReceiverApproval = "PendingForReceiverApproval",
     PendingForSenderCash = "PendingForSenderCash",
     PendingForReceiverCash = "PendingForReceiverCash",
+    ComplianceProcessing = "ComplianceProcessing",
 }
 
 export interface TransactionTypeDto {
@@ -3061,8 +3272,6 @@ export interface UpdateExchangeRateDetailDto {
 }
 
 export interface UpdateExchangeRateDto {
-    name?: string | null;
-    branchId?: number;
     details: UpdateExchangeRateDetailDto[] | null;
 }
 

@@ -39,6 +39,7 @@ export async function generateConfig(inputPath: string, clientName?: string) {
     const archivePath = `../tmp/output${folderName}.7z`;
 
     console.log(`ARCHIVE_PATH:${archivePath}`);
+    console.log(`OUTPUT_PATH:${outputPath}`);
 
     const myStream = SevenZip.add(archivePath, outputPath, {
       recursive: true,
@@ -50,7 +51,7 @@ export async function generateConfig(inputPath: string, clientName?: string) {
     });
 
     // Delete the original folder
-    await rimrafAsync(outputPath, {});
+    // await rimrafAsync(outputPath, {});
 
     // Return the path to the 7z file
     return archivePath;

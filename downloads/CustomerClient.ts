@@ -541,7 +541,6 @@ export class CorporateDelegateClient {
     /**
      * @param branchIdHeader (optional) 
      * @param customerId (optional) 
-     * @param customerIdentityId (optional) 
      * @param delegationTypeId (optional) 
      * @param fullName (optional) 
      * @param nationalityId (optional) 
@@ -565,7 +564,7 @@ export class CorporateDelegateClient {
      * @param id (optional) 
      * @return Success
      */
-    update(branchIdHeader: string | undefined, customerId: number | undefined, customerIdentityId: number | undefined, delegationTypeId: number | undefined, fullName: string | undefined, nationalityId: number | undefined, birthDate: string | undefined, phone: string | undefined, address: string | undefined, expiryDate: string | undefined, isPep: boolean | undefined, attachment_RemovedIds: number[] | undefined, attachment_Files: FileParameter[] | undefined, attachment_Id: number | undefined, customerIdentity_IdentityTypeId: number | undefined, customerIdentity_IdentityNumber: string | undefined, customerIdentity_NationalNo: string | undefined, customerIdentity_IssuePlaceId: number | undefined, customerIdentity_IssueDate: string | undefined, customerIdentity_ExpiryDate: string | undefined, customerIdentity_Attachment_RemovedIds: number[] | undefined, customerIdentity_Attachment_Files: FileParameter[] | undefined, customerIdentity_Attachment_Id: number | undefined, id: number | undefined, signal?: AbortSignal): Promise<UpdateCustomerDelegateDto> {
+    update(branchIdHeader: string | undefined, customerId: number | undefined, delegationTypeId: number | undefined, fullName: string | undefined, nationalityId: number | undefined, birthDate: string | undefined, phone: string | undefined, address: string | undefined, expiryDate: string | undefined, isPep: boolean | undefined, attachment_RemovedIds: number[] | undefined, attachment_Files: FileParameter[] | undefined, attachment_Id: number | undefined, customerIdentity_IdentityTypeId: number | undefined, customerIdentity_IdentityNumber: string | undefined, customerIdentity_NationalNo: string | undefined, customerIdentity_IssuePlaceId: number | undefined, customerIdentity_IssueDate: string | undefined, customerIdentity_ExpiryDate: string | undefined, customerIdentity_Attachment_RemovedIds: number[] | undefined, customerIdentity_Attachment_Files: FileParameter[] | undefined, customerIdentity_Attachment_Id: number | undefined, id: number | undefined, signal?: AbortSignal): Promise<UpdateCustomerDelegateDto> {
         let url_ = this.baseUrl + "/api/Customer/CorporateDelegate/Update";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -574,10 +573,6 @@ export class CorporateDelegateClient {
             throw new Error("The parameter 'customerId' cannot be null.");
         else
             content_.append("CustomerId", customerId.toString());
-        if (customerIdentityId === null || customerIdentityId === undefined)
-            throw new Error("The parameter 'customerIdentityId' cannot be null.");
-        else
-            content_.append("CustomerIdentityId", customerIdentityId.toString());
         if (delegationTypeId === null || delegationTypeId === undefined)
             throw new Error("The parameter 'delegationTypeId' cannot be null.");
         else
@@ -1051,7 +1046,6 @@ export class CorporateManagerClient {
      * @param updateAttachment_RemovedIds (optional) 
      * @param updateAttachment_Files (optional) 
      * @param updateAttachment_Id (optional) 
-     * @param customerIdentityId (optional) 
      * @param customerIdentity_IdentityTypeId (optional) 
      * @param customerIdentity_IdentityNumber (optional) 
      * @param customerIdentity_NationalNo (optional) 
@@ -1064,7 +1058,7 @@ export class CorporateManagerClient {
      * @param id (optional) 
      * @return Success
      */
-    update(branchIdHeader: string | undefined, fullName: string | undefined, birthDate: string | undefined, phone: string | undefined, address: string | undefined, nationalityId: number | undefined, positionId: number | undefined, isPep: boolean | undefined, updateAttachment_RemovedIds: number[] | undefined, updateAttachment_Files: FileParameter[] | undefined, updateAttachment_Id: number | undefined, customerIdentityId: number | undefined, customerIdentity_IdentityTypeId: number | undefined, customerIdentity_IdentityNumber: string | undefined, customerIdentity_NationalNo: string | undefined, customerIdentity_IssuePlaceId: number | undefined, customerIdentity_IssueDate: string | undefined, customerIdentity_ExpiryDate: string | undefined, customerIdentity_Attachment_RemovedIds: number[] | undefined, customerIdentity_Attachment_Files: FileParameter[] | undefined, customerIdentity_Attachment_Id: number | undefined, id: number | undefined, signal?: AbortSignal): Promise<boolean> {
+    update(branchIdHeader: string | undefined, fullName: string | undefined, birthDate: string | undefined, phone: string | undefined, address: string | undefined, nationalityId: number | undefined, positionId: number | undefined, isPep: boolean | undefined, updateAttachment_RemovedIds: number[] | undefined, updateAttachment_Files: FileParameter[] | undefined, updateAttachment_Id: number | undefined, customerIdentity_IdentityTypeId: number | undefined, customerIdentity_IdentityNumber: string | undefined, customerIdentity_NationalNo: string | undefined, customerIdentity_IssuePlaceId: number | undefined, customerIdentity_IssueDate: string | undefined, customerIdentity_ExpiryDate: string | undefined, customerIdentity_Attachment_RemovedIds: number[] | undefined, customerIdentity_Attachment_Files: FileParameter[] | undefined, customerIdentity_Attachment_Id: number | undefined, id: number | undefined, signal?: AbortSignal): Promise<boolean> {
         let url_ = this.baseUrl + "/api/Customer/CorporateManager/Update";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -1109,10 +1103,6 @@ export class CorporateManagerClient {
             throw new Error("The parameter 'updateAttachment_Id' cannot be null.");
         else
             content_.append("UpdateAttachment.Id", updateAttachment_Id.toString());
-        if (customerIdentityId === null || customerIdentityId === undefined)
-            throw new Error("The parameter 'customerIdentityId' cannot be null.");
-        else
-            content_.append("CustomerIdentityId", customerIdentityId.toString());
         if (customerIdentity_IdentityTypeId === null || customerIdentity_IdentityTypeId === undefined)
             throw new Error("The parameter 'customerIdentity_IdentityTypeId' cannot be null.");
         else
@@ -1537,7 +1527,6 @@ export class CorporatePartnerClient {
 
     /**
      * @param branchIdHeader (optional) 
-     * @param customerIdentityId (optional) 
      * @param partnershipTypeId (optional) 
      * @param partnerShare (optional) 
      * @param fullName (optional) 
@@ -1561,15 +1550,11 @@ export class CorporatePartnerClient {
      * @param id (optional) 
      * @return Success
      */
-    update(branchIdHeader: string | undefined, customerIdentityId: number | undefined, partnershipTypeId: number | undefined, partnerShare: number | undefined, fullName: string | undefined, nationalityId: number | undefined, birthDate: string | undefined, phone: string | undefined, address: string | undefined, attachment_RemovedIds: number[] | undefined, attachment_Files: FileParameter[] | undefined, attachment_Id: number | undefined, customerIdentity_IdentityTypeId: number | undefined, customerIdentity_IdentityNumber: string | undefined, customerIdentity_NationalNo: string | undefined, customerIdentity_IssuePlaceId: number | undefined, customerIdentity_IssueDate: string | undefined, customerIdentity_ExpiryDate: string | undefined, customerIdentity_Attachment_RemovedIds: number[] | undefined, customerIdentity_Attachment_Files: FileParameter[] | undefined, customerIdentity_Attachment_Id: number | undefined, isPep: boolean | undefined, id: number | undefined, signal?: AbortSignal): Promise<UpdateCustomerIdentityDto> {
+    update(branchIdHeader: string | undefined, partnershipTypeId: number | undefined, partnerShare: number | undefined, fullName: string | undefined, nationalityId: number | undefined, birthDate: string | undefined, phone: string | undefined, address: string | undefined, attachment_RemovedIds: number[] | undefined, attachment_Files: FileParameter[] | undefined, attachment_Id: number | undefined, customerIdentity_IdentityTypeId: number | undefined, customerIdentity_IdentityNumber: string | undefined, customerIdentity_NationalNo: string | undefined, customerIdentity_IssuePlaceId: number | undefined, customerIdentity_IssueDate: string | undefined, customerIdentity_ExpiryDate: string | undefined, customerIdentity_Attachment_RemovedIds: number[] | undefined, customerIdentity_Attachment_Files: FileParameter[] | undefined, customerIdentity_Attachment_Id: number | undefined, isPep: boolean | undefined, id: number | undefined, signal?: AbortSignal): Promise<UpdateCustomerIdentityDto> {
         let url_ = this.baseUrl + "/api/Customer/CorporatePartner/Update";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = new FormData();
-        if (customerIdentityId === null || customerIdentityId === undefined)
-            throw new Error("The parameter 'customerIdentityId' cannot be null.");
-        else
-            content_.append("CustomerIdentityId", customerIdentityId.toString());
         if (partnershipTypeId === null || partnershipTypeId === undefined)
             throw new Error("The parameter 'partnershipTypeId' cannot be null.");
         else
@@ -2354,6 +2339,59 @@ export class CustomerComplianceClient {
         }
         return Promise.resolve<void>(null as any);
     }
+
+    /**
+     * @param branchIdHeader (optional) 
+     * @return Success
+     */
+    getRecheckAllJobStatus(branchIdHeader: string | undefined, signal?: AbortSignal): Promise<boolean> {
+        let url_ = this.baseUrl + "/api/Customer/CustomerCompliance/GetRecheckAllJobStatus";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: AxiosRequestConfig = {
+            method: "GET",
+            url: url_,
+            headers: {
+                "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
+                "Accept": "text/plain"
+            },
+            signal
+        };
+
+        return this.instance.request(options_).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.processGetRecheckAllJobStatus(_response);
+        });
+    }
+
+    protected processGetRecheckAllJobStatus(response: AxiosResponse): Promise<boolean> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (const k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = JSON.parse(resultData200);
+            return Promise.resolve<boolean>(result200);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<boolean>(null as any);
+    }
 }
 
 export class CustomerExtensionClient {
@@ -2367,176 +2405,6 @@ export class CustomerExtensionClient {
 
         this.baseUrl = baseUrl ?? "";
 
-    }
-
-    /**
-     * @param branchIdHeader (optional) 
-     * @param body (optional) 
-     * @return Success
-     */
-    create(branchIdHeader: string | undefined, body: AddFullCustomerExtensionDto | undefined, signal?: AbortSignal): Promise<number> {
-        let url_ = this.baseUrl + "/api/Customer/CustomerExtension/Create";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
-        let options_: AxiosRequestConfig = {
-            data: content_,
-            method: "POST",
-            url: url_,
-            headers: {
-                "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
-                "Content-Type": "application/json",
-                "Accept": "text/plain"
-            },
-            signal
-        };
-
-        return this.instance.request(options_).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processCreate(_response);
-        });
-    }
-
-    protected processCreate(response: AxiosResponse): Promise<number> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (const k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = JSON.parse(resultData200);
-            return Promise.resolve<number>(result200);
-
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<number>(null as any);
-    }
-
-    /**
-     * @param branchIdHeader (optional) 
-     * @param body (optional) 
-     * @return Success
-     */
-    update(branchIdHeader: string | undefined, body: UpdateCustomerExtensionDto | undefined, signal?: AbortSignal): Promise<UpdateCustomerIdentityDto> {
-        let url_ = this.baseUrl + "/api/Customer/CustomerExtension/Update";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(body);
-
-        let options_: AxiosRequestConfig = {
-            data: content_,
-            method: "PUT",
-            url: url_,
-            headers: {
-                "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
-                "Content-Type": "application/json",
-                "Accept": "text/plain"
-            },
-            signal
-        };
-
-        return this.instance.request(options_).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processUpdate(_response);
-        });
-    }
-
-    protected processUpdate(response: AxiosResponse): Promise<UpdateCustomerIdentityDto> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (const k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = JSON.parse(resultData200);
-            return Promise.resolve<UpdateCustomerIdentityDto>(result200);
-
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<UpdateCustomerIdentityDto>(null as any);
-    }
-
-    /**
-     * @param id (optional) 
-     * @param branchIdHeader (optional) 
-     * @return Success
-     */
-    delete(id: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<void> {
-        let url_ = this.baseUrl + "/api/Customer/CustomerExtension/Delete?";
-        if (id === null)
-            throw new Error("The parameter 'id' cannot be null.");
-        else if (id !== undefined)
-            url_ += "id=" + encodeURIComponent("" + id) + "&";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: AxiosRequestConfig = {
-            method: "DELETE",
-            url: url_,
-            headers: {
-                "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
-            },
-            signal
-        };
-
-        return this.instance.request(options_).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processDelete(_response);
-        });
-    }
-
-    protected processDelete(response: AxiosResponse): Promise<void> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (const k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            return Promise.resolve<void>(null as any);
-
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<void>(null as any);
     }
 
     /**
@@ -3569,9 +3437,130 @@ export class CustomerReportClient {
     }
 
     /**
+     * @param identityTypeIds (optional) 
+     * @param identityNumber (optional) 
+     * @param nationalNumber (optional) 
+     * @param isMain (optional) 
+     * @param issuePlaceIds (optional) 
+     * @param issueDate_From (optional) 
+     * @param issueDate_To (optional) 
+     * @param expiryDate_From (optional) 
+     * @param expiryDate_To (optional) 
+     * @param identityStatus (optional) 
+     * @param delegationStatus (optional) 
+     * @param pageNumber (optional) 
+     * @param pageSize (optional) 
+     * @param branchIdHeader (optional) 
+     * @return Success
+     */
+    exportCustomerIdentity(identityTypeIds: number[] | undefined, identityNumber: string | undefined, nationalNumber: string | undefined, isMain: boolean | undefined, issuePlaceIds: number[] | undefined, issueDate_From: string | undefined, issueDate_To: string | undefined, expiryDate_From: string | undefined, expiryDate_To: string | undefined, identityStatus: IdentityStatuses | undefined, delegationStatus: IdentityStatuses | undefined, pageNumber: number | undefined, pageSize: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<FileDto> {
+        let url_ = this.baseUrl + "/api/Customer/CustomerReport/ExportCustomerIdentity?";
+        if (identityTypeIds === null)
+            throw new Error("The parameter 'identityTypeIds' cannot be null.");
+        else if (identityTypeIds !== undefined)
+            identityTypeIds && identityTypeIds.forEach(item => { url_ += "IdentityTypeIds=" + encodeURIComponent("" + item) + "&"; });
+        if (identityNumber === null)
+            throw new Error("The parameter 'identityNumber' cannot be null.");
+        else if (identityNumber !== undefined)
+            url_ += "IdentityNumber=" + encodeURIComponent("" + identityNumber) + "&";
+        if (nationalNumber === null)
+            throw new Error("The parameter 'nationalNumber' cannot be null.");
+        else if (nationalNumber !== undefined)
+            url_ += "NationalNumber=" + encodeURIComponent("" + nationalNumber) + "&";
+        if (isMain === null)
+            throw new Error("The parameter 'isMain' cannot be null.");
+        else if (isMain !== undefined)
+            url_ += "IsMain=" + encodeURIComponent("" + isMain) + "&";
+        if (issuePlaceIds === null)
+            throw new Error("The parameter 'issuePlaceIds' cannot be null.");
+        else if (issuePlaceIds !== undefined)
+            issuePlaceIds && issuePlaceIds.forEach(item => { url_ += "IssuePlaceIds=" + encodeURIComponent("" + item) + "&"; });
+        if (issueDate_From === null)
+            throw new Error("The parameter 'issueDate_From' cannot be null.");
+        else if (issueDate_From !== undefined)
+            url_ += "IssueDate.From=" + encodeURIComponent("" + issueDate_From) + "&";
+        if (issueDate_To === null)
+            throw new Error("The parameter 'issueDate_To' cannot be null.");
+        else if (issueDate_To !== undefined)
+            url_ += "IssueDate.To=" + encodeURIComponent("" + issueDate_To) + "&";
+        if (expiryDate_From === null)
+            throw new Error("The parameter 'expiryDate_From' cannot be null.");
+        else if (expiryDate_From !== undefined)
+            url_ += "ExpiryDate.From=" + encodeURIComponent("" + expiryDate_From) + "&";
+        if (expiryDate_To === null)
+            throw new Error("The parameter 'expiryDate_To' cannot be null.");
+        else if (expiryDate_To !== undefined)
+            url_ += "ExpiryDate.To=" + encodeURIComponent("" + expiryDate_To) + "&";
+        if (identityStatus === null)
+            throw new Error("The parameter 'identityStatus' cannot be null.");
+        else if (identityStatus !== undefined)
+            url_ += "IdentityStatus=" + encodeURIComponent("" + identityStatus) + "&";
+        if (delegationStatus === null)
+            throw new Error("The parameter 'delegationStatus' cannot be null.");
+        else if (delegationStatus !== undefined)
+            url_ += "DelegationStatus=" + encodeURIComponent("" + delegationStatus) + "&";
+        if (pageNumber === null)
+            throw new Error("The parameter 'pageNumber' cannot be null.");
+        else if (pageNumber !== undefined)
+            url_ += "PageNumber=" + encodeURIComponent("" + pageNumber) + "&";
+        if (pageSize === null)
+            throw new Error("The parameter 'pageSize' cannot be null.");
+        else if (pageSize !== undefined)
+            url_ += "PageSize=" + encodeURIComponent("" + pageSize) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: AxiosRequestConfig = {
+            method: "GET",
+            url: url_,
+            headers: {
+                "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
+                "Accept": "text/plain"
+            },
+            signal
+        };
+
+        return this.instance.request(options_).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.processExportCustomerIdentity(_response);
+        });
+    }
+
+    protected processExportCustomerIdentity(response: AxiosResponse): Promise<FileDto> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (const k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = JSON.parse(resultData200);
+            return Promise.resolve<FileDto>(result200);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<FileDto>(null as any);
+    }
+
+    /**
      * @param date_From (optional) 
      * @param date_To (optional) 
      * @param name (optional) 
+     * @param pWD (optional) 
+     * @param isPep (optional) 
+     * @param isFI (optional) 
      * @param types (optional) 
      * @param subTypes (optional) 
      * @param nationalityIds (optional) 
@@ -3585,7 +3574,140 @@ export class CustomerReportClient {
      * @param branchIdHeader (optional) 
      * @return Success
      */
-    getCustomers(date_From: string | undefined, date_To: string | undefined, name: string | undefined, types: CustomerTypes[] | undefined, subTypes: number[] | undefined, nationalityIds: number[] | undefined, identityTypeIds: number[] | undefined, identityNumber: string | undefined, professionIds: number[] | undefined, branchIds: number[] | undefined, statuses: CustomerStatuses[] | undefined, pageNumber: number | undefined, pageSize: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<CustomersReportModelIPaginatedList> {
+    exportCustomersReport(date_From: string | undefined, date_To: string | undefined, name: string | undefined, pWD: boolean | undefined, isPep: boolean | undefined, isFI: boolean | undefined, types: CustomerTypes[] | undefined, subTypes: number[] | undefined, nationalityIds: number[] | undefined, identityTypeIds: number[] | undefined, identityNumber: string | undefined, professionIds: number[] | undefined, branchIds: number[] | undefined, statuses: CustomerStatuses[] | undefined, pageNumber: number | undefined, pageSize: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<FileDto> {
+        let url_ = this.baseUrl + "/api/Customer/CustomerReport/ExportCustomersReport?";
+        if (date_From === null)
+            throw new Error("The parameter 'date_From' cannot be null.");
+        else if (date_From !== undefined)
+            url_ += "Date.From=" + encodeURIComponent("" + date_From) + "&";
+        if (date_To === null)
+            throw new Error("The parameter 'date_To' cannot be null.");
+        else if (date_To !== undefined)
+            url_ += "Date.To=" + encodeURIComponent("" + date_To) + "&";
+        if (name === null)
+            throw new Error("The parameter 'name' cannot be null.");
+        else if (name !== undefined)
+            url_ += "Name=" + encodeURIComponent("" + name) + "&";
+        if (pWD === null)
+            throw new Error("The parameter 'pWD' cannot be null.");
+        else if (pWD !== undefined)
+            url_ += "PWD=" + encodeURIComponent("" + pWD) + "&";
+        if (isPep === null)
+            throw new Error("The parameter 'isPep' cannot be null.");
+        else if (isPep !== undefined)
+            url_ += "IsPep=" + encodeURIComponent("" + isPep) + "&";
+        if (isFI === null)
+            throw new Error("The parameter 'isFI' cannot be null.");
+        else if (isFI !== undefined)
+            url_ += "IsFI=" + encodeURIComponent("" + isFI) + "&";
+        if (types === null)
+            throw new Error("The parameter 'types' cannot be null.");
+        else if (types !== undefined)
+            types && types.forEach(item => { url_ += "Types=" + encodeURIComponent("" + item) + "&"; });
+        if (subTypes === null)
+            throw new Error("The parameter 'subTypes' cannot be null.");
+        else if (subTypes !== undefined)
+            subTypes && subTypes.forEach(item => { url_ += "SubTypes=" + encodeURIComponent("" + item) + "&"; });
+        if (nationalityIds === null)
+            throw new Error("The parameter 'nationalityIds' cannot be null.");
+        else if (nationalityIds !== undefined)
+            nationalityIds && nationalityIds.forEach(item => { url_ += "NationalityIds=" + encodeURIComponent("" + item) + "&"; });
+        if (identityTypeIds === null)
+            throw new Error("The parameter 'identityTypeIds' cannot be null.");
+        else if (identityTypeIds !== undefined)
+            identityTypeIds && identityTypeIds.forEach(item => { url_ += "IdentityTypeIds=" + encodeURIComponent("" + item) + "&"; });
+        if (identityNumber === null)
+            throw new Error("The parameter 'identityNumber' cannot be null.");
+        else if (identityNumber !== undefined)
+            url_ += "IdentityNumber=" + encodeURIComponent("" + identityNumber) + "&";
+        if (professionIds === null)
+            throw new Error("The parameter 'professionIds' cannot be null.");
+        else if (professionIds !== undefined)
+            professionIds && professionIds.forEach(item => { url_ += "ProfessionIds=" + encodeURIComponent("" + item) + "&"; });
+        if (branchIds === null)
+            throw new Error("The parameter 'branchIds' cannot be null.");
+        else if (branchIds !== undefined)
+            branchIds && branchIds.forEach(item => { url_ += "BranchIds=" + encodeURIComponent("" + item) + "&"; });
+        if (statuses === null)
+            throw new Error("The parameter 'statuses' cannot be null.");
+        else if (statuses !== undefined)
+            statuses && statuses.forEach(item => { url_ += "Statuses=" + encodeURIComponent("" + item) + "&"; });
+        if (pageNumber === null)
+            throw new Error("The parameter 'pageNumber' cannot be null.");
+        else if (pageNumber !== undefined)
+            url_ += "PageNumber=" + encodeURIComponent("" + pageNumber) + "&";
+        if (pageSize === null)
+            throw new Error("The parameter 'pageSize' cannot be null.");
+        else if (pageSize !== undefined)
+            url_ += "PageSize=" + encodeURIComponent("" + pageSize) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: AxiosRequestConfig = {
+            method: "GET",
+            url: url_,
+            headers: {
+                "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
+                "Accept": "text/plain"
+            },
+            signal
+        };
+
+        return this.instance.request(options_).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.processExportCustomersReport(_response);
+        });
+    }
+
+    protected processExportCustomersReport(response: AxiosResponse): Promise<FileDto> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (const k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = JSON.parse(resultData200);
+            return Promise.resolve<FileDto>(result200);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<FileDto>(null as any);
+    }
+
+    /**
+     * @param date_From (optional) 
+     * @param date_To (optional) 
+     * @param name (optional) 
+     * @param pWD (optional) 
+     * @param isPep (optional) 
+     * @param isFI (optional) 
+     * @param types (optional) 
+     * @param subTypes (optional) 
+     * @param nationalityIds (optional) 
+     * @param identityTypeIds (optional) 
+     * @param identityNumber (optional) 
+     * @param professionIds (optional) 
+     * @param branchIds (optional) 
+     * @param statuses (optional) 
+     * @param pageNumber (optional) 
+     * @param pageSize (optional) 
+     * @param branchIdHeader (optional) 
+     * @return Success
+     */
+    getCustomers(date_From: string | undefined, date_To: string | undefined, name: string | undefined, pWD: boolean | undefined, isPep: boolean | undefined, isFI: boolean | undefined, types: CustomerTypes[] | undefined, subTypes: number[] | undefined, nationalityIds: number[] | undefined, identityTypeIds: number[] | undefined, identityNumber: string | undefined, professionIds: number[] | undefined, branchIds: number[] | undefined, statuses: CustomerStatuses[] | undefined, pageNumber: number | undefined, pageSize: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<CustomersReportModelIPaginatedList> {
         let url_ = this.baseUrl + "/api/Customer/CustomerReport/GetCustomers?";
         if (date_From === null)
             throw new Error("The parameter 'date_From' cannot be null.");
@@ -3599,6 +3721,18 @@ export class CustomerReportClient {
             throw new Error("The parameter 'name' cannot be null.");
         else if (name !== undefined)
             url_ += "Name=" + encodeURIComponent("" + name) + "&";
+        if (pWD === null)
+            throw new Error("The parameter 'pWD' cannot be null.");
+        else if (pWD !== undefined)
+            url_ += "PWD=" + encodeURIComponent("" + pWD) + "&";
+        if (isPep === null)
+            throw new Error("The parameter 'isPep' cannot be null.");
+        else if (isPep !== undefined)
+            url_ += "IsPep=" + encodeURIComponent("" + isPep) + "&";
+        if (isFI === null)
+            throw new Error("The parameter 'isFI' cannot be null.");
+        else if (isFI !== undefined)
+            url_ += "IsFI=" + encodeURIComponent("" + isFI) + "&";
         if (types === null)
             throw new Error("The parameter 'types' cannot be null.");
         else if (types !== undefined)
@@ -3803,242 +3937,6 @@ export class CustomerReportClient {
         }
         return Promise.resolve<IdentityReportModelIPaginatedList>(null as any);
     }
-
-    /**
-     * @param identityTypeIds (optional) 
-     * @param identityNumber (optional) 
-     * @param nationalNumber (optional) 
-     * @param isMain (optional) 
-     * @param issuePlaceIds (optional) 
-     * @param issueDate_From (optional) 
-     * @param issueDate_To (optional) 
-     * @param expiryDate_From (optional) 
-     * @param expiryDate_To (optional) 
-     * @param identityStatus (optional) 
-     * @param delegationStatus (optional) 
-     * @param pageNumber (optional) 
-     * @param pageSize (optional) 
-     * @param branchIdHeader (optional) 
-     * @return Success
-     */
-    exportCustomerIdentity(identityTypeIds: number[] | undefined, identityNumber: string | undefined, nationalNumber: string | undefined, isMain: boolean | undefined, issuePlaceIds: number[] | undefined, issueDate_From: string | undefined, issueDate_To: string | undefined, expiryDate_From: string | undefined, expiryDate_To: string | undefined, identityStatus: IdentityStatuses | undefined, delegationStatus: IdentityStatuses | undefined, pageNumber: number | undefined, pageSize: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<FileDto> {
-        let url_ = this.baseUrl + "/api/Customer/CustomerReport/ExportCustomerIdentity?";
-        if (identityTypeIds === null)
-            throw new Error("The parameter 'identityTypeIds' cannot be null.");
-        else if (identityTypeIds !== undefined)
-            identityTypeIds && identityTypeIds.forEach(item => { url_ += "IdentityTypeIds=" + encodeURIComponent("" + item) + "&"; });
-        if (identityNumber === null)
-            throw new Error("The parameter 'identityNumber' cannot be null.");
-        else if (identityNumber !== undefined)
-            url_ += "IdentityNumber=" + encodeURIComponent("" + identityNumber) + "&";
-        if (nationalNumber === null)
-            throw new Error("The parameter 'nationalNumber' cannot be null.");
-        else if (nationalNumber !== undefined)
-            url_ += "NationalNumber=" + encodeURIComponent("" + nationalNumber) + "&";
-        if (isMain === null)
-            throw new Error("The parameter 'isMain' cannot be null.");
-        else if (isMain !== undefined)
-            url_ += "IsMain=" + encodeURIComponent("" + isMain) + "&";
-        if (issuePlaceIds === null)
-            throw new Error("The parameter 'issuePlaceIds' cannot be null.");
-        else if (issuePlaceIds !== undefined)
-            issuePlaceIds && issuePlaceIds.forEach(item => { url_ += "IssuePlaceIds=" + encodeURIComponent("" + item) + "&"; });
-        if (issueDate_From === null)
-            throw new Error("The parameter 'issueDate_From' cannot be null.");
-        else if (issueDate_From !== undefined)
-            url_ += "IssueDate.From=" + encodeURIComponent("" + issueDate_From) + "&";
-        if (issueDate_To === null)
-            throw new Error("The parameter 'issueDate_To' cannot be null.");
-        else if (issueDate_To !== undefined)
-            url_ += "IssueDate.To=" + encodeURIComponent("" + issueDate_To) + "&";
-        if (expiryDate_From === null)
-            throw new Error("The parameter 'expiryDate_From' cannot be null.");
-        else if (expiryDate_From !== undefined)
-            url_ += "ExpiryDate.From=" + encodeURIComponent("" + expiryDate_From) + "&";
-        if (expiryDate_To === null)
-            throw new Error("The parameter 'expiryDate_To' cannot be null.");
-        else if (expiryDate_To !== undefined)
-            url_ += "ExpiryDate.To=" + encodeURIComponent("" + expiryDate_To) + "&";
-        if (identityStatus === null)
-            throw new Error("The parameter 'identityStatus' cannot be null.");
-        else if (identityStatus !== undefined)
-            url_ += "IdentityStatus=" + encodeURIComponent("" + identityStatus) + "&";
-        if (delegationStatus === null)
-            throw new Error("The parameter 'delegationStatus' cannot be null.");
-        else if (delegationStatus !== undefined)
-            url_ += "DelegationStatus=" + encodeURIComponent("" + delegationStatus) + "&";
-        if (pageNumber === null)
-            throw new Error("The parameter 'pageNumber' cannot be null.");
-        else if (pageNumber !== undefined)
-            url_ += "PageNumber=" + encodeURIComponent("" + pageNumber) + "&";
-        if (pageSize === null)
-            throw new Error("The parameter 'pageSize' cannot be null.");
-        else if (pageSize !== undefined)
-            url_ += "PageSize=" + encodeURIComponent("" + pageSize) + "&";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: AxiosRequestConfig = {
-            method: "GET",
-            url: url_,
-            headers: {
-                "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
-                "Accept": "text/plain"
-            },
-            signal
-        };
-
-        return this.instance.request(options_).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processExportCustomerIdentity(_response);
-        });
-    }
-
-    protected processExportCustomerIdentity(response: AxiosResponse): Promise<FileDto> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (const k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = JSON.parse(resultData200);
-            return Promise.resolve<FileDto>(result200);
-
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<FileDto>(null as any);
-    }
-
-    /**
-     * @param date_From (optional) 
-     * @param date_To (optional) 
-     * @param name (optional) 
-     * @param types (optional) 
-     * @param subTypes (optional) 
-     * @param nationalityIds (optional) 
-     * @param identityTypeIds (optional) 
-     * @param identityNumber (optional) 
-     * @param professionIds (optional) 
-     * @param branchIds (optional) 
-     * @param statuses (optional) 
-     * @param pageNumber (optional) 
-     * @param pageSize (optional) 
-     * @param branchIdHeader (optional) 
-     * @return Success
-     */
-    exportCustomersReport(date_From: string | undefined, date_To: string | undefined, name: string | undefined, types: CustomerTypes[] | undefined, subTypes: number[] | undefined, nationalityIds: number[] | undefined, identityTypeIds: number[] | undefined, identityNumber: string | undefined, professionIds: number[] | undefined, branchIds: number[] | undefined, statuses: CustomerStatuses[] | undefined, pageNumber: number | undefined, pageSize: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<FileDto> {
-        let url_ = this.baseUrl + "/api/Customer/CustomerReport/ExportCustomersReport?";
-        if (date_From === null)
-            throw new Error("The parameter 'date_From' cannot be null.");
-        else if (date_From !== undefined)
-            url_ += "Date.From=" + encodeURIComponent("" + date_From) + "&";
-        if (date_To === null)
-            throw new Error("The parameter 'date_To' cannot be null.");
-        else if (date_To !== undefined)
-            url_ += "Date.To=" + encodeURIComponent("" + date_To) + "&";
-        if (name === null)
-            throw new Error("The parameter 'name' cannot be null.");
-        else if (name !== undefined)
-            url_ += "Name=" + encodeURIComponent("" + name) + "&";
-        if (types === null)
-            throw new Error("The parameter 'types' cannot be null.");
-        else if (types !== undefined)
-            types && types.forEach(item => { url_ += "Types=" + encodeURIComponent("" + item) + "&"; });
-        if (subTypes === null)
-            throw new Error("The parameter 'subTypes' cannot be null.");
-        else if (subTypes !== undefined)
-            subTypes && subTypes.forEach(item => { url_ += "SubTypes=" + encodeURIComponent("" + item) + "&"; });
-        if (nationalityIds === null)
-            throw new Error("The parameter 'nationalityIds' cannot be null.");
-        else if (nationalityIds !== undefined)
-            nationalityIds && nationalityIds.forEach(item => { url_ += "NationalityIds=" + encodeURIComponent("" + item) + "&"; });
-        if (identityTypeIds === null)
-            throw new Error("The parameter 'identityTypeIds' cannot be null.");
-        else if (identityTypeIds !== undefined)
-            identityTypeIds && identityTypeIds.forEach(item => { url_ += "IdentityTypeIds=" + encodeURIComponent("" + item) + "&"; });
-        if (identityNumber === null)
-            throw new Error("The parameter 'identityNumber' cannot be null.");
-        else if (identityNumber !== undefined)
-            url_ += "IdentityNumber=" + encodeURIComponent("" + identityNumber) + "&";
-        if (professionIds === null)
-            throw new Error("The parameter 'professionIds' cannot be null.");
-        else if (professionIds !== undefined)
-            professionIds && professionIds.forEach(item => { url_ += "ProfessionIds=" + encodeURIComponent("" + item) + "&"; });
-        if (branchIds === null)
-            throw new Error("The parameter 'branchIds' cannot be null.");
-        else if (branchIds !== undefined)
-            branchIds && branchIds.forEach(item => { url_ += "BranchIds=" + encodeURIComponent("" + item) + "&"; });
-        if (statuses === null)
-            throw new Error("The parameter 'statuses' cannot be null.");
-        else if (statuses !== undefined)
-            statuses && statuses.forEach(item => { url_ += "Statuses=" + encodeURIComponent("" + item) + "&"; });
-        if (pageNumber === null)
-            throw new Error("The parameter 'pageNumber' cannot be null.");
-        else if (pageNumber !== undefined)
-            url_ += "PageNumber=" + encodeURIComponent("" + pageNumber) + "&";
-        if (pageSize === null)
-            throw new Error("The parameter 'pageSize' cannot be null.");
-        else if (pageSize !== undefined)
-            url_ += "PageSize=" + encodeURIComponent("" + pageSize) + "&";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: AxiosRequestConfig = {
-            method: "GET",
-            url: url_,
-            headers: {
-                "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
-                "Accept": "text/plain"
-            },
-            signal
-        };
-
-        return this.instance.request(options_).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processExportCustomersReport(_response);
-        });
-    }
-
-    protected processExportCustomersReport(response: AxiosResponse): Promise<FileDto> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (const k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = JSON.parse(resultData200);
-            return Promise.resolve<FileDto>(result200);
-
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<FileDto>(null as any);
-    }
 }
 
 export class CustomersClient {
@@ -4052,6 +3950,338 @@ export class CustomersClient {
 
         this.baseUrl = baseUrl ?? "";
 
+    }
+
+    /**
+     * @param customerId (optional) 
+     * @param period (optional) 
+     * @param transactionTypeIds (optional) 
+     * @param branchIdHeader (optional) 
+     * @return Success
+     */
+    getCustomerCardTransaction(customerId: number | undefined, period: TimePeriods | undefined, transactionTypeIds: number[] | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<CustomerCardTransactionModel> {
+        let url_ = this.baseUrl + "/api/Customer/Customers/GetCustomerCardTransaction?";
+        if (customerId === null)
+            throw new Error("The parameter 'customerId' cannot be null.");
+        else if (customerId !== undefined)
+            url_ += "CustomerId=" + encodeURIComponent("" + customerId) + "&";
+        if (period === null)
+            throw new Error("The parameter 'period' cannot be null.");
+        else if (period !== undefined)
+            url_ += "Period=" + encodeURIComponent("" + period) + "&";
+        if (transactionTypeIds === null)
+            throw new Error("The parameter 'transactionTypeIds' cannot be null.");
+        else if (transactionTypeIds !== undefined)
+            transactionTypeIds && transactionTypeIds.forEach(item => { url_ += "TransactionTypeIds=" + encodeURIComponent("" + item) + "&"; });
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: AxiosRequestConfig = {
+            method: "GET",
+            url: url_,
+            headers: {
+                "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
+                "Accept": "text/plain"
+            },
+            signal
+        };
+
+        return this.instance.request(options_).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.processGetCustomerCardTransaction(_response);
+        });
+    }
+
+    protected processGetCustomerCardTransaction(response: AxiosResponse): Promise<CustomerCardTransactionModel> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (const k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = JSON.parse(resultData200);
+            return Promise.resolve<CustomerCardTransactionModel>(result200);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<CustomerCardTransactionModel>(null as any);
+    }
+
+    /**
+     * @param id (optional) 
+     * @param branchIdHeader (optional) 
+     * @return Success
+     */
+    printIndividualKYC(id: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<FileDto> {
+        let url_ = this.baseUrl + "/api/Customer/Customers/PrintIndividualKYC?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: AxiosRequestConfig = {
+            method: "GET",
+            url: url_,
+            headers: {
+                "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
+                "Accept": "text/plain"
+            },
+            signal
+        };
+
+        return this.instance.request(options_).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.processPrintIndividualKYC(_response);
+        });
+    }
+
+    protected processPrintIndividualKYC(response: AxiosResponse): Promise<FileDto> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (const k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = JSON.parse(resultData200);
+            return Promise.resolve<FileDto>(result200);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<FileDto>(null as any);
+    }
+
+    /**
+     * @param id (optional) 
+     * @param branchIdHeader (optional) 
+     * @return Success
+     */
+    printCorporateKYC(id: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<FileDto> {
+        let url_ = this.baseUrl + "/api/Customer/Customers/PrintCorporateKYC?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: AxiosRequestConfig = {
+            method: "GET",
+            url: url_,
+            headers: {
+                "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
+                "Accept": "text/plain"
+            },
+            signal
+        };
+
+        return this.instance.request(options_).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.processPrintCorporateKYC(_response);
+        });
+    }
+
+    protected processPrintCorporateKYC(response: AxiosResponse): Promise<FileDto> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (const k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = JSON.parse(resultData200);
+            return Promise.resolve<FileDto>(result200);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<FileDto>(null as any);
+    }
+
+    /**
+     * @param exportAs (optional) 
+     * @param key (optional) 
+     * @param number (optional) 
+     * @param name (optional) 
+     * @param pWD (optional) 
+     * @param isPep (optional) 
+     * @param isFI (optional) 
+     * @param type (optional) 
+     * @param dateCreated_From (optional) 
+     * @param dateCreated_To (optional) 
+     * @param nationalityIds (optional) 
+     * @param date_From (optional) 
+     * @param date_To (optional) 
+     * @param identityNumber (optional) 
+     * @param identityExpiryDate_From (optional) 
+     * @param identityExpiryDate_To (optional) 
+     * @param customerStatuses (optional) 
+     * @param pageNumber (optional) 
+     * @param pageSize (optional) 
+     * @param branchIdHeader (optional) 
+     * @return Success
+     */
+    export(exportAs: ReportTypes | undefined, key: string | undefined, number: string | undefined, name: string | undefined, pWD: boolean | undefined, isPep: boolean | undefined, isFI: boolean | undefined, type: CustomerTypes | undefined, dateCreated_From: string | undefined, dateCreated_To: string | undefined, nationalityIds: number[] | undefined, date_From: string | undefined, date_To: string | undefined, identityNumber: string | undefined, identityExpiryDate_From: string | undefined, identityExpiryDate_To: string | undefined, customerStatuses: CustomerStatuses[] | undefined, pageNumber: number | undefined, pageSize: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<FileDto> {
+        let url_ = this.baseUrl + "/api/Customer/Customers/Export?";
+        if (exportAs === null)
+            throw new Error("The parameter 'exportAs' cannot be null.");
+        else if (exportAs !== undefined)
+            url_ += "ExportAs=" + encodeURIComponent("" + exportAs) + "&";
+        if (key === null)
+            throw new Error("The parameter 'key' cannot be null.");
+        else if (key !== undefined)
+            url_ += "Key=" + encodeURIComponent("" + key) + "&";
+        if (number === null)
+            throw new Error("The parameter 'number' cannot be null.");
+        else if (number !== undefined)
+            url_ += "Number=" + encodeURIComponent("" + number) + "&";
+        if (name === null)
+            throw new Error("The parameter 'name' cannot be null.");
+        else if (name !== undefined)
+            url_ += "Name=" + encodeURIComponent("" + name) + "&";
+        if (pWD === null)
+            throw new Error("The parameter 'pWD' cannot be null.");
+        else if (pWD !== undefined)
+            url_ += "PWD=" + encodeURIComponent("" + pWD) + "&";
+        if (isPep === null)
+            throw new Error("The parameter 'isPep' cannot be null.");
+        else if (isPep !== undefined)
+            url_ += "IsPep=" + encodeURIComponent("" + isPep) + "&";
+        if (isFI === null)
+            throw new Error("The parameter 'isFI' cannot be null.");
+        else if (isFI !== undefined)
+            url_ += "IsFI=" + encodeURIComponent("" + isFI) + "&";
+        if (type === null)
+            throw new Error("The parameter 'type' cannot be null.");
+        else if (type !== undefined)
+            url_ += "Type=" + encodeURIComponent("" + type) + "&";
+        if (dateCreated_From === null)
+            throw new Error("The parameter 'dateCreated_From' cannot be null.");
+        else if (dateCreated_From !== undefined)
+            url_ += "DateCreated.From=" + encodeURIComponent("" + dateCreated_From) + "&";
+        if (dateCreated_To === null)
+            throw new Error("The parameter 'dateCreated_To' cannot be null.");
+        else if (dateCreated_To !== undefined)
+            url_ += "DateCreated.To=" + encodeURIComponent("" + dateCreated_To) + "&";
+        if (nationalityIds === null)
+            throw new Error("The parameter 'nationalityIds' cannot be null.");
+        else if (nationalityIds !== undefined)
+            nationalityIds && nationalityIds.forEach(item => { url_ += "NationalityIds=" + encodeURIComponent("" + item) + "&"; });
+        if (date_From === null)
+            throw new Error("The parameter 'date_From' cannot be null.");
+        else if (date_From !== undefined)
+            url_ += "Date.From=" + encodeURIComponent("" + date_From) + "&";
+        if (date_To === null)
+            throw new Error("The parameter 'date_To' cannot be null.");
+        else if (date_To !== undefined)
+            url_ += "Date.To=" + encodeURIComponent("" + date_To) + "&";
+        if (identityNumber === null)
+            throw new Error("The parameter 'identityNumber' cannot be null.");
+        else if (identityNumber !== undefined)
+            url_ += "IdentityNumber=" + encodeURIComponent("" + identityNumber) + "&";
+        if (identityExpiryDate_From === null)
+            throw new Error("The parameter 'identityExpiryDate_From' cannot be null.");
+        else if (identityExpiryDate_From !== undefined)
+            url_ += "IdentityExpiryDate.From=" + encodeURIComponent("" + identityExpiryDate_From) + "&";
+        if (identityExpiryDate_To === null)
+            throw new Error("The parameter 'identityExpiryDate_To' cannot be null.");
+        else if (identityExpiryDate_To !== undefined)
+            url_ += "IdentityExpiryDate.To=" + encodeURIComponent("" + identityExpiryDate_To) + "&";
+        if (customerStatuses === null)
+            throw new Error("The parameter 'customerStatuses' cannot be null.");
+        else if (customerStatuses !== undefined)
+            customerStatuses && customerStatuses.forEach(item => { url_ += "CustomerStatuses=" + encodeURIComponent("" + item) + "&"; });
+        if (pageNumber === null)
+            throw new Error("The parameter 'pageNumber' cannot be null.");
+        else if (pageNumber !== undefined)
+            url_ += "PageNumber=" + encodeURIComponent("" + pageNumber) + "&";
+        if (pageSize === null)
+            throw new Error("The parameter 'pageSize' cannot be null.");
+        else if (pageSize !== undefined)
+            url_ += "PageSize=" + encodeURIComponent("" + pageSize) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: AxiosRequestConfig = {
+            method: "GET",
+            url: url_,
+            headers: {
+                "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
+                "Accept": "text/plain"
+            },
+            signal
+        };
+
+        return this.instance.request(options_).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.processExport(_response);
+        });
+    }
+
+    protected processExport(response: AxiosResponse): Promise<FileDto> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (const k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = JSON.parse(resultData200);
+            return Promise.resolve<FileDto>(result200);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<FileDto>(null as any);
     }
 
     /**
@@ -4341,74 +4571,6 @@ export class CustomersClient {
 
     /**
      * @param customerId (optional) 
-     * @param period (optional) 
-     * @param transactionTypeIds (optional) 
-     * @param branchIdHeader (optional) 
-     * @return Success
-     */
-    getCustomerCardTransaction(customerId: number | undefined, period: TimePeriods | undefined, transactionTypeIds: number[] | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<CustomerCardTransactionModel> {
-        let url_ = this.baseUrl + "/api/Customer/Customers/GetCustomerCardTransaction?";
-        if (customerId === null)
-            throw new Error("The parameter 'customerId' cannot be null.");
-        else if (customerId !== undefined)
-            url_ += "CustomerId=" + encodeURIComponent("" + customerId) + "&";
-        if (period === null)
-            throw new Error("The parameter 'period' cannot be null.");
-        else if (period !== undefined)
-            url_ += "Period=" + encodeURIComponent("" + period) + "&";
-        if (transactionTypeIds === null)
-            throw new Error("The parameter 'transactionTypeIds' cannot be null.");
-        else if (transactionTypeIds !== undefined)
-            transactionTypeIds && transactionTypeIds.forEach(item => { url_ += "TransactionTypeIds=" + encodeURIComponent("" + item) + "&"; });
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: AxiosRequestConfig = {
-            method: "GET",
-            url: url_,
-            headers: {
-                "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
-                "Accept": "text/plain"
-            },
-            signal
-        };
-
-        return this.instance.request(options_).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processGetCustomerCardTransaction(_response);
-        });
-    }
-
-    protected processGetCustomerCardTransaction(response: AxiosResponse): Promise<CustomerCardTransactionModel> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (const k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = JSON.parse(resultData200);
-            return Promise.resolve<CustomerCardTransactionModel>(result200);
-
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<CustomerCardTransactionModel>(null as any);
-    }
-
-    /**
-     * @param customerId (optional) 
      * @param branchIdHeader (optional) 
      * @return Success
      */
@@ -4585,9 +4747,12 @@ export class CustomersClient {
      * @param key (optional) 
      * @param number (optional) 
      * @param name (optional) 
-     * @param isVip (optional) 
+     * @param pWD (optional) 
      * @param isPep (optional) 
+     * @param isFI (optional) 
      * @param type (optional) 
+     * @param dateCreated_From (optional) 
+     * @param dateCreated_To (optional) 
      * @param nationalityIds (optional) 
      * @param date_From (optional) 
      * @param date_To (optional) 
@@ -4595,13 +4760,12 @@ export class CustomersClient {
      * @param identityExpiryDate_From (optional) 
      * @param identityExpiryDate_To (optional) 
      * @param customerStatuses (optional) 
-     * @param exportAs (optional) 
      * @param pageNumber (optional) 
      * @param pageSize (optional) 
      * @param branchIdHeader (optional) 
      * @return Success
      */
-    getPaginatedList(key: string | undefined, number: string | undefined, name: string | undefined, isVip: boolean | undefined, isPep: boolean | undefined, type: CustomerTypes | undefined, nationalityIds: number[] | undefined, date_From: string | undefined, date_To: string | undefined, identityNumber: string | undefined, identityExpiryDate_From: string | undefined, identityExpiryDate_To: string | undefined, customerStatuses: CustomerStatuses[] | undefined, exportAs: ReportTypes | undefined, pageNumber: number | undefined, pageSize: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<CustomerListDtoIPaginatedList> {
+    getPaginatedList(key: string | undefined, number: string | undefined, name: string | undefined, pWD: boolean | undefined, isPep: boolean | undefined, isFI: boolean | undefined, type: CustomerTypes | undefined, dateCreated_From: string | undefined, dateCreated_To: string | undefined, nationalityIds: number[] | undefined, date_From: string | undefined, date_To: string | undefined, identityNumber: string | undefined, identityExpiryDate_From: string | undefined, identityExpiryDate_To: string | undefined, customerStatuses: CustomerStatuses[] | undefined, pageNumber: number | undefined, pageSize: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<CustomerListDtoIPaginatedList> {
         let url_ = this.baseUrl + "/api/Customer/Customers/GetPaginatedList?";
         if (key === null)
             throw new Error("The parameter 'key' cannot be null.");
@@ -4615,18 +4779,30 @@ export class CustomersClient {
             throw new Error("The parameter 'name' cannot be null.");
         else if (name !== undefined)
             url_ += "Name=" + encodeURIComponent("" + name) + "&";
-        if (isVip === null)
-            throw new Error("The parameter 'isVip' cannot be null.");
-        else if (isVip !== undefined)
-            url_ += "IsVip=" + encodeURIComponent("" + isVip) + "&";
+        if (pWD === null)
+            throw new Error("The parameter 'pWD' cannot be null.");
+        else if (pWD !== undefined)
+            url_ += "PWD=" + encodeURIComponent("" + pWD) + "&";
         if (isPep === null)
             throw new Error("The parameter 'isPep' cannot be null.");
         else if (isPep !== undefined)
             url_ += "IsPep=" + encodeURIComponent("" + isPep) + "&";
+        if (isFI === null)
+            throw new Error("The parameter 'isFI' cannot be null.");
+        else if (isFI !== undefined)
+            url_ += "IsFI=" + encodeURIComponent("" + isFI) + "&";
         if (type === null)
             throw new Error("The parameter 'type' cannot be null.");
         else if (type !== undefined)
             url_ += "Type=" + encodeURIComponent("" + type) + "&";
+        if (dateCreated_From === null)
+            throw new Error("The parameter 'dateCreated_From' cannot be null.");
+        else if (dateCreated_From !== undefined)
+            url_ += "DateCreated.From=" + encodeURIComponent("" + dateCreated_From) + "&";
+        if (dateCreated_To === null)
+            throw new Error("The parameter 'dateCreated_To' cannot be null.");
+        else if (dateCreated_To !== undefined)
+            url_ += "DateCreated.To=" + encodeURIComponent("" + dateCreated_To) + "&";
         if (nationalityIds === null)
             throw new Error("The parameter 'nationalityIds' cannot be null.");
         else if (nationalityIds !== undefined)
@@ -4655,10 +4831,6 @@ export class CustomersClient {
             throw new Error("The parameter 'customerStatuses' cannot be null.");
         else if (customerStatuses !== undefined)
             customerStatuses && customerStatuses.forEach(item => { url_ += "CustomerStatuses=" + encodeURIComponent("" + item) + "&"; });
-        if (exportAs === null)
-            throw new Error("The parameter 'exportAs' cannot be null.");
-        else if (exportAs !== undefined)
-            url_ += "ExportAs=" + encodeURIComponent("" + exportAs) + "&";
         if (pageNumber === null)
             throw new Error("The parameter 'pageNumber' cannot be null.");
         else if (pageNumber !== undefined)
@@ -4803,277 +4975,23 @@ export class CustomersClient {
     }
 
     /**
-     * @param id (optional) 
      * @param branchIdHeader (optional) 
+     * @param body (optional) 
      * @return Success
      */
-    printIndividualKYC(id: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<FileDto> {
-        let url_ = this.baseUrl + "/api/Customer/Customers/PrintIndividualKYC?";
-        if (id === null)
-            throw new Error("The parameter 'id' cannot be null.");
-        else if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&";
+    releaseBlockToggle(branchIdHeader: string | undefined, body: ReleaseBlockToggleModel | undefined, signal?: AbortSignal): Promise<CustomerStatuses> {
+        let url_ = this.baseUrl + "/api/Customer/Customers/ReleaseBlockToggle";
         url_ = url_.replace(/[?&]$/, "");
 
-        let options_: AxiosRequestConfig = {
-            method: "GET",
-            url: url_,
-            headers: {
-                "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
-                "Accept": "text/plain"
-            },
-            signal
-        };
-
-        return this.instance.request(options_).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processPrintIndividualKYC(_response);
-        });
-    }
-
-    protected processPrintIndividualKYC(response: AxiosResponse): Promise<FileDto> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (const k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = JSON.parse(resultData200);
-            return Promise.resolve<FileDto>(result200);
-
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<FileDto>(null as any);
-    }
-
-    /**
-     * @param id (optional) 
-     * @param branchIdHeader (optional) 
-     * @return Success
-     */
-    printCorporateKYC(id: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<FileDto> {
-        let url_ = this.baseUrl + "/api/Customer/Customers/PrintCorporateKYC?";
-        if (id === null)
-            throw new Error("The parameter 'id' cannot be null.");
-        else if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&";
-        url_ = url_.replace(/[?&]$/, "");
+        const content_ = JSON.stringify(body);
 
         let options_: AxiosRequestConfig = {
-            method: "GET",
-            url: url_,
-            headers: {
-                "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
-                "Accept": "text/plain"
-            },
-            signal
-        };
-
-        return this.instance.request(options_).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processPrintCorporateKYC(_response);
-        });
-    }
-
-    protected processPrintCorporateKYC(response: AxiosResponse): Promise<FileDto> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (const k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = JSON.parse(resultData200);
-            return Promise.resolve<FileDto>(result200);
-
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<FileDto>(null as any);
-    }
-
-    /**
-     * @param key (optional) 
-     * @param number (optional) 
-     * @param name (optional) 
-     * @param isVip (optional) 
-     * @param isPep (optional) 
-     * @param type (optional) 
-     * @param nationalityIds (optional) 
-     * @param date_From (optional) 
-     * @param date_To (optional) 
-     * @param identityNumber (optional) 
-     * @param identityExpiryDate_From (optional) 
-     * @param identityExpiryDate_To (optional) 
-     * @param customerStatuses (optional) 
-     * @param exportAs (optional) 
-     * @param pageNumber (optional) 
-     * @param pageSize (optional) 
-     * @param branchIdHeader (optional) 
-     * @return Success
-     */
-    export(key: string | undefined, number: string | undefined, name: string | undefined, isVip: boolean | undefined, isPep: boolean | undefined, type: CustomerTypes | undefined, nationalityIds: number[] | undefined, date_From: string | undefined, date_To: string | undefined, identityNumber: string | undefined, identityExpiryDate_From: string | undefined, identityExpiryDate_To: string | undefined, customerStatuses: CustomerStatuses[] | undefined, exportAs: ReportTypes | undefined, pageNumber: number | undefined, pageSize: number | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<FileDto> {
-        let url_ = this.baseUrl + "/api/Customer/Customers/Export?";
-        if (key === null)
-            throw new Error("The parameter 'key' cannot be null.");
-        else if (key !== undefined)
-            url_ += "Key=" + encodeURIComponent("" + key) + "&";
-        if (number === null)
-            throw new Error("The parameter 'number' cannot be null.");
-        else if (number !== undefined)
-            url_ += "Number=" + encodeURIComponent("" + number) + "&";
-        if (name === null)
-            throw new Error("The parameter 'name' cannot be null.");
-        else if (name !== undefined)
-            url_ += "Name=" + encodeURIComponent("" + name) + "&";
-        if (isVip === null)
-            throw new Error("The parameter 'isVip' cannot be null.");
-        else if (isVip !== undefined)
-            url_ += "IsVip=" + encodeURIComponent("" + isVip) + "&";
-        if (isPep === null)
-            throw new Error("The parameter 'isPep' cannot be null.");
-        else if (isPep !== undefined)
-            url_ += "IsPep=" + encodeURIComponent("" + isPep) + "&";
-        if (type === null)
-            throw new Error("The parameter 'type' cannot be null.");
-        else if (type !== undefined)
-            url_ += "Type=" + encodeURIComponent("" + type) + "&";
-        if (nationalityIds === null)
-            throw new Error("The parameter 'nationalityIds' cannot be null.");
-        else if (nationalityIds !== undefined)
-            nationalityIds && nationalityIds.forEach(item => { url_ += "NationalityIds=" + encodeURIComponent("" + item) + "&"; });
-        if (date_From === null)
-            throw new Error("The parameter 'date_From' cannot be null.");
-        else if (date_From !== undefined)
-            url_ += "Date.From=" + encodeURIComponent("" + date_From) + "&";
-        if (date_To === null)
-            throw new Error("The parameter 'date_To' cannot be null.");
-        else if (date_To !== undefined)
-            url_ += "Date.To=" + encodeURIComponent("" + date_To) + "&";
-        if (identityNumber === null)
-            throw new Error("The parameter 'identityNumber' cannot be null.");
-        else if (identityNumber !== undefined)
-            url_ += "IdentityNumber=" + encodeURIComponent("" + identityNumber) + "&";
-        if (identityExpiryDate_From === null)
-            throw new Error("The parameter 'identityExpiryDate_From' cannot be null.");
-        else if (identityExpiryDate_From !== undefined)
-            url_ += "IdentityExpiryDate.From=" + encodeURIComponent("" + identityExpiryDate_From) + "&";
-        if (identityExpiryDate_To === null)
-            throw new Error("The parameter 'identityExpiryDate_To' cannot be null.");
-        else if (identityExpiryDate_To !== undefined)
-            url_ += "IdentityExpiryDate.To=" + encodeURIComponent("" + identityExpiryDate_To) + "&";
-        if (customerStatuses === null)
-            throw new Error("The parameter 'customerStatuses' cannot be null.");
-        else if (customerStatuses !== undefined)
-            customerStatuses && customerStatuses.forEach(item => { url_ += "CustomerStatuses=" + encodeURIComponent("" + item) + "&"; });
-        if (exportAs === null)
-            throw new Error("The parameter 'exportAs' cannot be null.");
-        else if (exportAs !== undefined)
-            url_ += "ExportAs=" + encodeURIComponent("" + exportAs) + "&";
-        if (pageNumber === null)
-            throw new Error("The parameter 'pageNumber' cannot be null.");
-        else if (pageNumber !== undefined)
-            url_ += "PageNumber=" + encodeURIComponent("" + pageNumber) + "&";
-        if (pageSize === null)
-            throw new Error("The parameter 'pageSize' cannot be null.");
-        else if (pageSize !== undefined)
-            url_ += "PageSize=" + encodeURIComponent("" + pageSize) + "&";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: AxiosRequestConfig = {
-            method: "GET",
-            url: url_,
-            headers: {
-                "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
-                "Accept": "text/plain"
-            },
-            signal
-        };
-
-        return this.instance.request(options_).catch((_error: any) => {
-            if (isAxiosError(_error) && _error.response) {
-                return _error.response;
-            } else {
-                throw _error;
-            }
-        }).then((_response: AxiosResponse) => {
-            return this.processExport(_response);
-        });
-    }
-
-    protected processExport(response: AxiosResponse): Promise<FileDto> {
-        const status = response.status;
-        let _headers: any = {};
-        if (response.headers && typeof response.headers === "object") {
-            for (const k in response.headers) {
-                if (response.headers.hasOwnProperty(k)) {
-                    _headers[k] = response.headers[k];
-                }
-            }
-        }
-        if (status === 200) {
-            const _responseText = response.data;
-            let result200: any = null;
-            let resultData200  = _responseText;
-            result200 = JSON.parse(resultData200);
-            return Promise.resolve<FileDto>(result200);
-
-        } else if (status !== 200 && status !== 204) {
-            const _responseText = response.data;
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-        }
-        return Promise.resolve<FileDto>(null as any);
-    }
-
-    /**
-     * @param id (optional) 
-     * @param remark (optional) 
-     * @param branchIdHeader (optional) 
-     * @return Success
-     */
-    releaseBlockToggle(id: number | undefined, remark: string | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<CustomerStatuses> {
-        let url_ = this.baseUrl + "/api/Customer/Customers/ReleaseBlockToggle?";
-        if (id === null)
-            throw new Error("The parameter 'id' cannot be null.");
-        else if (id !== undefined)
-            url_ += "Id=" + encodeURIComponent("" + id) + "&";
-        if (remark === null)
-            throw new Error("The parameter 'remark' cannot be null.");
-        else if (remark !== undefined)
-            url_ += "Remark=" + encodeURIComponent("" + remark) + "&";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: AxiosRequestConfig = {
+            data: content_,
             method: "PUT",
             url: url_,
             headers: {
                 "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
+                "Content-Type": "application/json",
                 "Accept": "text/plain"
             },
             signal
@@ -5147,7 +5065,7 @@ export class FormClient {
      * @param residencyTypeId (optional) 
      * @param professionId (optional) 
      * @param nationalityId (optional) 
-     * @param isVip (optional) 
+     * @param pWD (optional) 
      * @param isPep (optional) 
      * @param customerAddresses (optional) 
      * @param customerExtensions (optional) 
@@ -5155,7 +5073,7 @@ export class FormClient {
      * @param customerDelegates (optional) 
      * @return Success
      */
-    createPerson(branchIdHeader: string | undefined, firstName: string | undefined, secondName: string | undefined, thirdName: string | undefined, lastName: string | undefined, firstNameLang: string | undefined, secondNameLang: string | undefined, thirdNameLang: string | undefined, lastNameLang: string | undefined, phone: string | undefined, email: string | undefined, birthDate: string | undefined, customerSubTypeId: number | undefined, birthPlaceId: number | undefined, genderId: number | undefined, residencyTypeId: number | undefined, professionId: number | undefined, nationalityId: number | undefined, isVip: boolean | undefined, isPep: boolean | undefined, customerAddresses: AddCustomerAddressDto[] | undefined, customerExtensions: AddCustomerExtensionDto[] | undefined, identities: AddCustomerIdentityDto[] | undefined, customerDelegates: AddCustomerDelegateDto[] | undefined, signal?: AbortSignal): Promise<AddCustomerResponseDto> {
+    createPerson(branchIdHeader: string | undefined, firstName: string | undefined, secondName: string | undefined, thirdName: string | undefined, lastName: string | undefined, firstNameLang: string | undefined, secondNameLang: string | undefined, thirdNameLang: string | undefined, lastNameLang: string | undefined, phone: string | undefined, email: string | undefined, birthDate: string | undefined, customerSubTypeId: number | undefined, birthPlaceId: number | undefined, genderId: number | undefined, residencyTypeId: number | undefined, professionId: number | undefined, nationalityId: number | undefined, pWD: boolean | undefined, isPep: boolean | undefined, customerAddresses: AddCustomerAddressDto[] | undefined, customerExtensions: AddCustomerExtensionDto[] | undefined, identities: AddCustomerIdentityDto[] | undefined, customerDelegates: AddCustomerDelegateDto[] | undefined, signal?: AbortSignal): Promise<AddCustomerResponseDto> {
         let url_ = this.baseUrl + "/api/Customer/Customers/form/CreatePerson";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -5228,10 +5146,10 @@ export class FormClient {
             throw new Error("The parameter 'nationalityId' cannot be null.");
         else
             content_.append("NationalityId", nationalityId.toString());
-        if (isVip === null || isVip === undefined)
-            throw new Error("The parameter 'isVip' cannot be null.");
+        if (pWD === null || pWD === undefined)
+            throw new Error("The parameter 'pWD' cannot be null.");
         else
-            content_.append("IsVip", isVip.toString());
+            content_.append("PWD", pWD.toString());
         if (isPep === null || isPep === undefined)
             throw new Error("The parameter 'isPep' cannot be null.");
         else
@@ -5311,8 +5229,9 @@ export class FormClient {
      * @param liabilityTypeId (optional) 
      * @param industryId (optional) 
      * @param nationalityId (optional) 
-     * @param isVip (optional) 
+     * @param pWD (optional) 
      * @param isPep (optional) 
+     * @param isFI (optional) 
      * @param corporatePartners (optional) 
      * @param customerAddresses (optional) 
      * @param customerExtensions (optional) 
@@ -5327,7 +5246,7 @@ export class FormClient {
      * @param descriptionLang (optional) 
      * @return Success
      */
-    createCorporate(branchIdHeader: string | undefined, phone: string | undefined, email: string | undefined, fax: string | undefined, website: string | undefined, establishmentDate: string | undefined, customerSubTypeId: number | undefined, ownershipTypeId: number | undefined, liabilityTypeId: number | undefined, industryId: number | undefined, nationalityId: number | undefined, isVip: boolean | undefined, isPep: boolean | undefined, corporatePartners: AddCorporatePartnerDto[] | undefined, customerAddresses: AddCustomerAddressDto[] | undefined, customerExtensions: AddCustomerExtensionDto[] | undefined, identities: AddCustomerIdentityDto[] | undefined, corporateDelegates: AddCustomerDelegateDto[] | undefined, corporateManagers: AddCorporateManagerDto[] | undefined, corporateActivities: AddCorporateActivityDto[] | undefined, activityIds: number[] | undefined, name: string | undefined, nameLang: string | undefined, description: string | undefined, descriptionLang: string | undefined, signal?: AbortSignal): Promise<AddCustomerResponseDto> {
+    createCorporate(branchIdHeader: string | undefined, phone: string | undefined, email: string | undefined, fax: string | undefined, website: string | undefined, establishmentDate: string | undefined, customerSubTypeId: number | undefined, ownershipTypeId: number | undefined, liabilityTypeId: number | undefined, industryId: number | undefined, nationalityId: number | undefined, pWD: boolean | undefined, isPep: boolean | undefined, isFI: boolean | undefined, corporatePartners: AddCorporatePartnerDto[] | undefined, customerAddresses: AddCustomerAddressDto[] | undefined, customerExtensions: AddCustomerExtensionDto[] | undefined, identities: AddCustomerIdentityDto[] | undefined, corporateDelegates: AddCustomerDelegateDto[] | undefined, corporateManagers: AddCorporateManagerDto[] | undefined, corporateActivities: AddCorporateActivityDto[] | undefined, activityIds: number[] | undefined, name: string | undefined, nameLang: string | undefined, description: string | undefined, descriptionLang: string | undefined, signal?: AbortSignal): Promise<AddCustomerResponseDto> {
         let url_ = this.baseUrl + "/api/Customer/Customers/form/CreateCorporate";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -5372,14 +5291,18 @@ export class FormClient {
             throw new Error("The parameter 'nationalityId' cannot be null.");
         else
             content_.append("NationalityId", nationalityId.toString());
-        if (isVip === null || isVip === undefined)
-            throw new Error("The parameter 'isVip' cannot be null.");
+        if (pWD === null || pWD === undefined)
+            throw new Error("The parameter 'pWD' cannot be null.");
         else
-            content_.append("IsVip", isVip.toString());
+            content_.append("PWD", pWD.toString());
         if (isPep === null || isPep === undefined)
             throw new Error("The parameter 'isPep' cannot be null.");
         else
             content_.append("IsPep", isPep.toString());
+        if (isFI === null || isFI === undefined)
+            throw new Error("The parameter 'isFI' cannot be null.");
+        else
+            content_.append("IsFI", isFI.toString());
         if (corporatePartners === null || corporatePartners === undefined)
             throw new Error("The parameter 'corporatePartners' cannot be null.");
         else
@@ -5494,12 +5417,12 @@ export class FormClient {
      * @param residencyTypeId (optional) 
      * @param professionId (optional) 
      * @param nationalityId (optional) 
-     * @param isVip (optional) 
+     * @param pWD (optional) 
      * @param isPep (optional) 
      * @param id (optional) 
      * @return Success
      */
-    updatePerson(branchIdHeader: string | undefined, firstName: string | undefined, secondName: string | undefined, thirdName: string | undefined, lastName: string | undefined, firstNameLang: string | undefined, secondNameLang: string | undefined, thirdNameLang: string | undefined, lastNameLang: string | undefined, phone: string | undefined, email: string | undefined, birthDate: string | undefined, customerSubTypeId: number | undefined, birthPlaceId: number | undefined, genderId: number | undefined, residencyTypeId: number | undefined, professionId: number | undefined, nationalityId: number | undefined, isVip: boolean | undefined, isPep: boolean | undefined, id: number | undefined, signal?: AbortSignal): Promise<UpdatePersonDto> {
+    updatePerson(branchIdHeader: string | undefined, firstName: string | undefined, secondName: string | undefined, thirdName: string | undefined, lastName: string | undefined, firstNameLang: string | undefined, secondNameLang: string | undefined, thirdNameLang: string | undefined, lastNameLang: string | undefined, phone: string | undefined, email: string | undefined, birthDate: string | undefined, customerSubTypeId: number | undefined, birthPlaceId: number | undefined, genderId: number | undefined, residencyTypeId: number | undefined, professionId: number | undefined, nationalityId: number | undefined, pWD: boolean | undefined, isPep: boolean | undefined, id: number | undefined, signal?: AbortSignal): Promise<UpdatePersonDto> {
         let url_ = this.baseUrl + "/api/Customer/Customers/form/UpdatePerson";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -5572,10 +5495,10 @@ export class FormClient {
             throw new Error("The parameter 'nationalityId' cannot be null.");
         else
             content_.append("NationalityId", nationalityId.toString());
-        if (isVip === null || isVip === undefined)
-            throw new Error("The parameter 'isVip' cannot be null.");
+        if (pWD === null || pWD === undefined)
+            throw new Error("The parameter 'pWD' cannot be null.");
         else
-            content_.append("IsVip", isVip.toString());
+            content_.append("PWD", pWD.toString());
         if (isPep === null || isPep === undefined)
             throw new Error("The parameter 'isPep' cannot be null.");
         else
@@ -5643,8 +5566,9 @@ export class FormClient {
      * @param liabilityTypeId (optional) 
      * @param industryId (optional) 
      * @param nationalityId (optional) 
-     * @param isVip (optional) 
+     * @param pWD (optional) 
      * @param isPep (optional) 
+     * @param isFI (optional) 
      * @param corporateActivities (optional) 
      * @param activityIds (optional) 
      * @param name (optional) 
@@ -5654,7 +5578,7 @@ export class FormClient {
      * @param id (optional) 
      * @return Success
      */
-    updateCorporate(branchIdHeader: string | undefined, phone: string | undefined, email: string | undefined, fax: string | undefined, website: string | undefined, establishmentDate: string | undefined, customerSubTypeId: number | undefined, ownershipTypeId: number | undefined, liabilityTypeId: number | undefined, industryId: number | undefined, nationalityId: number | undefined, isVip: boolean | undefined, isPep: boolean | undefined, corporateActivities: UpdateCorporateActivityDto[] | undefined, activityIds: number[] | undefined, name: string | undefined, nameLang: string | undefined, description: string | undefined, descriptionLang: string | undefined, id: number | undefined, signal?: AbortSignal): Promise<UpdateCorporateDto> {
+    updateCorporate(branchIdHeader: string | undefined, phone: string | undefined, email: string | undefined, fax: string | undefined, website: string | undefined, establishmentDate: string | undefined, customerSubTypeId: number | undefined, ownershipTypeId: number | undefined, liabilityTypeId: number | undefined, industryId: number | undefined, nationalityId: number | undefined, pWD: boolean | undefined, isPep: boolean | undefined, isFI: boolean | undefined, corporateActivities: UpdateCorporateActivityDto[] | undefined, activityIds: number[] | undefined, name: string | undefined, nameLang: string | undefined, description: string | undefined, descriptionLang: string | undefined, id: number | undefined, signal?: AbortSignal): Promise<UpdateCorporateDto> {
         let url_ = this.baseUrl + "/api/Customer/Customers/form/UpdateCorporate";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -5699,14 +5623,18 @@ export class FormClient {
             throw new Error("The parameter 'nationalityId' cannot be null.");
         else
             content_.append("NationalityId", nationalityId.toString());
-        if (isVip === null || isVip === undefined)
-            throw new Error("The parameter 'isVip' cannot be null.");
+        if (pWD === null || pWD === undefined)
+            throw new Error("The parameter 'pWD' cannot be null.");
         else
-            content_.append("IsVip", isVip.toString());
+            content_.append("PWD", pWD.toString());
         if (isPep === null || isPep === undefined)
             throw new Error("The parameter 'isPep' cannot be null.");
         else
             content_.append("IsPep", isPep.toString());
+        if (isFI === null || isFI === undefined)
+            throw new Error("The parameter 'isFI' cannot be null.");
+        else
+            content_.append("IsFI", isFI.toString());
         if (corporateActivities === null || corporateActivities === undefined)
             throw new Error("The parameter 'corporateActivities' cannot be null.");
         else
@@ -7203,6 +7131,64 @@ export class CustomFieldClient {
     }
 
     /**
+     * @param code (optional) 
+     * @param branchIdHeader (optional) 
+     * @return Success
+     */
+    getByCode(code: string | undefined, branchIdHeader: string | undefined, signal?: AbortSignal): Promise<CustomFieldDto> {
+        let url_ = this.baseUrl + "/api/Customer/CustomField/GetByCode?";
+        if (code === null)
+            throw new Error("The parameter 'code' cannot be null.");
+        else if (code !== undefined)
+            url_ += "code=" + encodeURIComponent("" + code) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: AxiosRequestConfig = {
+            method: "GET",
+            url: url_,
+            headers: {
+                "BranchIdHeader": branchIdHeader !== undefined && branchIdHeader !== null ? "" + branchIdHeader : "",
+                "Accept": "text/plain"
+            },
+            signal
+        };
+
+        return this.instance.request(options_).catch((_error: any) => {
+            if (isAxiosError(_error) && _error.response) {
+                return _error.response;
+            } else {
+                throw _error;
+            }
+        }).then((_response: AxiosResponse) => {
+            return this.processGetByCode(_response);
+        });
+    }
+
+    protected processGetByCode(response: AxiosResponse): Promise<CustomFieldDto> {
+        const status = response.status;
+        let _headers: any = {};
+        if (response.headers && typeof response.headers === "object") {
+            for (const k in response.headers) {
+                if (response.headers.hasOwnProperty(k)) {
+                    _headers[k] = response.headers[k];
+                }
+            }
+        }
+        if (status === 200) {
+            const _responseText = response.data;
+            let result200: any = null;
+            let resultData200  = _responseText;
+            result200 = JSON.parse(resultData200);
+            return Promise.resolve<CustomFieldDto>(result200);
+
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.data;
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Promise.resolve<CustomFieldDto>(null as any);
+    }
+
+    /**
      * @param customerType (optional) 
      * @param usingInFilter (optional) 
      * @param branchIdHeader (optional) 
@@ -8018,6 +8004,7 @@ export interface ActivityLogDto {
     actionDate?: string;
     actionName?: string | null;
     actionBy?: string | null;
+    actionById?: number | null;
     assignedTo?: string | null;
     remarks?: string | null;
     status?: string | null;
@@ -8046,13 +8033,14 @@ export interface AddCorporateDto {
     fax?: string | null;
     website?: string | null;
     establishmentDate: string;
-    customerSubTypeId?: number | null;
+    customerSubTypeId: number;
     ownershipTypeId: number;
     liabilityTypeId: number;
     industryId: number;
     nationalityId: number;
-    isVip?: boolean;
+    pwd?: boolean;
     isPep?: boolean;
+    isFI?: boolean;
     corporatePartners: AddCorporatePartnerDto[] | null;
     customerAddresses: AddCustomerAddressDto[];
     customerExtensions?: AddCustomerExtensionDto[] | null;
@@ -8115,9 +8103,10 @@ export interface AddCustomerAddressDto {
     addressTypeId: number;
     countryId: number;
     cityId: number;
-    detailedAddress?: string | null;
     district: string;
     street: string;
+    detailedAddress?: string | null;
+    permanentAddress?: string | null;
     building?: string | null;
     poBox?: string | null;
     isMain: boolean;
@@ -8198,19 +8187,14 @@ export interface AddFullCustomerAddressDto {
     addressTypeId: number;
     countryId: number;
     cityId: number;
-    detailedAddress?: string | null;
     district: string;
     street: string;
+    detailedAddress?: string | null;
+    permanentAddress?: string | null;
     building?: string | null;
     poBox?: string | null;
     isMain?: boolean;
     customerId?: number;
-}
-
-export interface AddFullCustomerExtensionDto {
-    customerId?: number;
-    customFieldId?: number;
-    customFieldValue?: string | null;
 }
 
 export interface AddIdentityTypeDto {
@@ -8243,7 +8227,7 @@ export interface AddPersonDto {
     residencyTypeId: number;
     professionId: number;
     nationalityId: number;
-    isVip?: boolean;
+    pwd?: boolean;
     isPep?: boolean;
     customerAddresses: AddCustomerAddressDto[];
     customerExtensions?: AddCustomerExtensionDto[] | null;
@@ -8290,10 +8274,12 @@ export interface CheckCustomerIdentityInfoListRequestDto {
 }
 
 export interface CheckCustomerIdentityInfoRequestDto {
+    id?: number | null;
     customerId?: number | null;
     identityTypeId?: number;
     identityNumber?: string | null;
     issuePlaceId?: number;
+    identityFor?: IdentityFor;
 }
 
 export interface CheckCustomerInfoResponseDto {
@@ -8304,6 +8290,7 @@ export interface CheckCustomerInfoResponseDto {
     nationality?: SimpleCountryDto;
     birthDate?: string | null;
     establishmentDate?: string | null;
+    identityNumber?: string | null;
 }
 
 export interface CheckCustomerPersonalInfoRequestDto {
@@ -8400,6 +8387,7 @@ export interface CountryDto {
     id?: number;
     name?: string | null;
     code?: string | null;
+    iso3Code?: string | null;
     countryCode?: string | null;
     active?: boolean;
     aliases?: string[] | null;
@@ -8419,6 +8407,8 @@ export interface CustomFieldDto {
     dataType?: DataTypes;
     isRequired?: boolean;
     code?: string | null;
+    isCalculated?: boolean;
+    formula?: string | null;
     customFieldLookups?: CustomFieldLookupDto[] | null;
     active?: boolean;
 }
@@ -8437,9 +8427,10 @@ export interface CustomerAddressDto {
     countryId?: number;
     city?: SimpleCityDto;
     cityId?: number;
-    detailedAddress?: string | null;
     district?: string | null;
     street?: string | null;
+    detailedAddress?: string | null;
+    permanentAddress?: string | null;
     building?: string | null;
     poBox?: string | null;
     isMain?: boolean;
@@ -8460,6 +8451,7 @@ export interface CustomerCardTransactionItemModel {
     branch?: SimpleBranchDto;
     transactionType?: TransactionTypeDto;
     provider?: SimpleProviderLookupDto;
+    counterpartyName?: string | null;
     payinAmount?: number;
     payinCurrency?: SimpleCurrencyDto;
     payoutAmount?: number;
@@ -8520,6 +8512,7 @@ export interface CustomerDto {
     lastComplianceCheck?: string | null;
     type?: CustomerTypes;
     created?: string;
+    lastModified?: string | null;
     status?: CustomerStatuses;
     nationality?: CountryDto;
     nationalityId?: number;
@@ -8527,8 +8520,10 @@ export interface CustomerDto {
     branchId?: number | null;
     phone?: string | null;
     email?: string | null;
-    isVip?: boolean;
+    pwd?: boolean;
     isPep?: boolean;
+    isFI?: boolean;
+    canBeEdited?: boolean;
     printed?: boolean;
     corporate?: FullCorporateDto;
     person?: FullPersonDto;
@@ -8590,6 +8585,8 @@ export interface CustomerIdentitySearchModel {
     isExpired?: boolean;
     expiryDate?: string | null;
     isMain?: boolean;
+    viewUIRCode?: boolean;
+    industry?: CustomerLookupModel;
     delegateCustomerIdentity?: DelegateCustomerIdentity;
 }
 
@@ -8608,8 +8605,9 @@ export interface CustomerListDto {
     branch?: SimpleBranchDto;
     phone?: string | null;
     email?: string | null;
-    isVip?: boolean;
+    pwd?: boolean;
     isPep?: boolean;
+    isFI?: boolean;
     profession?: string | null;
     birthDate?: string;
     printed?: boolean;
@@ -8676,6 +8674,7 @@ export enum CustomerStatuses {
     Active = "Active",
     Blocked = "Blocked",
     Disabled = "Disabled",
+    PendingForEdit = "PendingForEdit",
 }
 
 export interface CustomerSubTypeDto {
@@ -8782,6 +8781,7 @@ export enum DataTypes {
     Account = "Account",
     AggregateAccount = "AggregateAccount",
     JournalAccount = "JournalAccount",
+    DeltaScreening = "DeltaScreening",
 }
 
 export interface DelegateCustomerIdentity {
@@ -8824,8 +8824,9 @@ export interface FullCorporateDto {
     liabilityTypeId?: number;
     industryId?: number;
     nationalityId?: number;
-    isVip?: boolean;
+    pwd?: boolean;
     isPep?: boolean;
+    isFI?: boolean;
     activityIds?: number[] | null;
     customerSubTypeName?: string | null;
     nationalityName?: string | null;
@@ -8844,6 +8845,8 @@ export interface FullCustomFieldDto {
     name?: string | null;
     nameLang?: string | null;
     isRequired?: boolean;
+    isCalculated?: boolean;
+    formula?: string | null;
     code?: string | null;
     active?: boolean;
     customFieldLookups?: FullCustomFieldLookupDto[] | null;
@@ -8863,6 +8866,7 @@ export interface FullCustomerDto {
     lastComplianceCheck?: string | null;
     type?: CustomerTypes;
     created?: string;
+    lastModified?: string | null;
     status?: CustomerStatuses;
     nationality?: CountryDto;
     nationalityId?: number;
@@ -8870,8 +8874,10 @@ export interface FullCustomerDto {
     branchId?: number | null;
     phone?: string | null;
     email?: string | null;
-    isVip?: boolean;
+    pwd?: boolean;
     isPep?: boolean;
+    isFI?: boolean;
+    canBeEdited?: boolean;
     printed?: boolean;
     corporate?: FullCorporateDto;
     person?: FullPersonDto;
@@ -8934,7 +8940,7 @@ export interface FullPersonDto {
     residencyTypeId?: number;
     professionId?: number;
     nationalityId?: number;
-    isVip?: boolean;
+    pwd?: boolean;
     isPep?: boolean;
     birthPlace?: CountryDto;
     gender?: CustomerLookupModel;
@@ -8967,7 +8973,7 @@ export interface FullPersonNoAttachmentDto {
     phone?: string | null;
     email?: string | null;
     isPep?: boolean;
-    isVip?: boolean;
+    pwd?: boolean;
     addresses?: CustomerAddressDto[] | null;
     identities?: CustomerSimpleIdentityDto[] | null;
     birthPlace?: CountryDto;
@@ -9054,6 +9060,11 @@ export enum ProviderTypes {
 export interface RecheckCustomerDto {
     customerId?: number;
     ignoreInterval?: boolean;
+}
+
+export interface ReleaseBlockToggleModel {
+    id?: number;
+    remark?: string | null;
 }
 
 export enum ReportTypes {
@@ -9143,6 +9154,7 @@ export enum TransactionStatuses {
     PendingForReceiverApproval = "PendingForReceiverApproval",
     PendingForSenderCash = "PendingForSenderCash",
     PendingForReceiverCash = "PendingForReceiverCash",
+    ComplianceProcessing = "ComplianceProcessing",
 }
 
 export interface TransactionTypeDto {
@@ -9177,8 +9189,9 @@ export interface UpdateCorporateBasicInformationDto {
     liabilityTypeId?: number;
     industryId?: number;
     nationalityId?: number;
-    isVip?: boolean;
+    pwd?: boolean;
     isPep?: boolean;
+    isFI?: boolean;
     activityIds?: number[] | null;
 }
 
@@ -9193,13 +9206,14 @@ export interface UpdateCorporateDto {
     fax?: string | null;
     website?: string | null;
     establishmentDate: string;
-    customerSubTypeId?: number | null;
+    customerSubTypeId: number;
     ownershipTypeId: number;
     liabilityTypeId: number;
     industryId: number;
     nationalityId: number;
-    isVip?: boolean;
+    pwd?: boolean;
     isPep?: boolean;
+    isFI?: boolean;
     activityIds?: number[] | null;
 }
 
@@ -9221,9 +9235,10 @@ export interface UpdateCustomerAddressDto {
     addressTypeId?: number;
     countryId?: number;
     cityId?: number;
-    detailedAddress?: string | null;
     district?: string | null;
     street?: string | null;
+    detailedAddress?: string | null;
+    permanentAddress?: string | null;
     building?: string | null;
     poBox?: string | null;
     isMain?: boolean;
@@ -9232,23 +9247,16 @@ export interface UpdateCustomerAddressDto {
 export interface UpdateCustomerDelegateDto {
     id?: number;
     customerId?: number | null;
-    customerIdentityId?: number | null;
-    delegationTypeId?: number;
+    delegationTypeId: number;
     fullName?: string | null;
     nationalityId?: number | null;
     birthDate?: string | null;
     phone?: string | null;
     address?: string | null;
-    expiryDate?: string;
+    expiryDate: string;
     isPep?: boolean;
     attachment?: UpdateAttachmentDto;
     customerIdentity?: UpdateExternalCustomerIdentityDto;
-}
-
-export interface UpdateCustomerExtensionDto {
-    id?: number;
-    customFieldId?: number;
-    customFieldValue?: string | null;
 }
 
 export interface UpdateCustomerIdentityDto {
@@ -9334,7 +9342,7 @@ export interface UpdatePersonBasicInformationDto {
     residencyTypeId?: number;
     professionId?: number;
     nationalityId?: number;
-    isVip?: boolean;
+    pwd?: boolean;
     isPep?: boolean;
 }
 
@@ -9357,7 +9365,7 @@ export interface UpdatePersonDto {
     residencyTypeId: number;
     professionId: number;
     nationalityId: number;
-    isVip?: boolean;
+    pwd?: boolean;
     isPep?: boolean;
 }
 

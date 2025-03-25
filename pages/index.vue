@@ -22,12 +22,12 @@ const generate = async () => {
   console.log(data);
   const dataValue = data.value as { archivePath?: string };
   if (dataValue.archivePath) {
-    const response = await fetch('generated.7z');
+    const response = await fetch("generated.zip");
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "generated.7z";
+    a.download = "generated.zip";
     document.body.appendChild(a);
     a.click();
     window.URL.revokeObjectURL(url);
